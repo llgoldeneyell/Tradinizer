@@ -1,0 +1,61 @@
+﻿/*#root {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: center;
+}
+
+th, td {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}*/
+
+/* Aggiungi un po' di margine ai contenuti per evitare che siano troppo vicini ai bordi */
+.container-fluid {
+    height: calc(100vh - 56px); /* Riduci l'altezza per tenere conto della navbar */
+    padding-top: 20px; /* Aggiungi margine per distanziare dal top */
+}
+
+/* Eventuali altre modifiche stilistiche che vuoi per il contenuto della pagina */
+
+
+th, td {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.action-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    padding: 0;
+    border-radius: 8px;
+    transition: box-shadow 0.3s ease; /* solo la transizione che ti serve */
+}
+
+    /* Stato: acceso */
+    .action-btn.on {
+        box-shadow: 0 0 10px #28a745;
+    }
+
+    /* Stato: spento */
+    .action-btn.off {
+        box-shadow: 0 0 10px #dc3545;
+    }
+
+    /* Rimuovi il margine sul pulsante finale (per evitare spazio extra) */
+    .action-btn:last-child {
+        margin-right: 0;
+    }
+
+/* Aggiungi questo CSS per cambiare il colore della barra orizzontale */
+.hr-light {
+    border: 0;
+    border-top: 1px solid white; /* Colore bianco */
+    width: 100%; /* Assicura che la barra prenda tutta la larghezza disponibile */
+    margin: 0.2rem 0; /* Distanza sopra e sotto la linea */
+}

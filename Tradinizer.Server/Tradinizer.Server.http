@@ -1,0 +1,6 @@
+@Tradinizer.Server_HostAddress = http://localhost:5162
+
+GET {{Tradinizer.Server_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

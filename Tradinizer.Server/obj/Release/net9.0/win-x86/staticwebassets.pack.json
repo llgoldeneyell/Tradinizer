@@ -1,0 +1,41 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\ITFOLLONIRI\\source\\repos\\Tradinizer\\Tradinizer.Server\\wwwroot\\assets\\index-BbQTn4lQ.css",
+      "PackagePath": "staticwebassets\\assets\\index-BbQTn4lQ.css"
+    },
+    {
+      "Id": "C:\\Users\\ITFOLLONIRI\\source\\repos\\Tradinizer\\Tradinizer.Server\\wwwroot\\assets\\index-DY99ibOV.js",
+      "PackagePath": "staticwebassets\\assets\\index-DY99ibOV.js"
+    },
+    {
+      "Id": "C:\\Users\\ITFOLLONIRI\\source\\repos\\Tradinizer\\Tradinizer.Server\\wwwroot\\index.html",
+      "PackagePath": "staticwebassets\\index.html"
+    },
+    {
+      "Id": "C:\\Users\\ITFOLLONIRI\\source\\repos\\Tradinizer\\Tradinizer.Server\\wwwroot\\vite.svg",
+      "PackagePath": "staticwebassets\\vite.svg"
+    },
+    {
+      "Id": "obj\\Release\\net9.0\\win-x86\\staticwebassets\\msbuild.Tradinizer.Server.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
+    },
+    {
+      "Id": "obj\\Release\\net9.0\\win-x86\\staticwebassets\\msbuild.Tradinizer.Server.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Release\\net9.0\\win-x86\\staticwebassets\\msbuild.build.Tradinizer.Server.props",
+      "PackagePath": "build\\Tradinizer.Server.props"
+    },
+    {
+      "Id": "obj\\Release\\net9.0\\win-x86\\staticwebassets\\msbuild.buildMultiTargeting.Tradinizer.Server.props",
+      "PackagePath": "buildMultiTargeting\\Tradinizer.Server.props"
+    },
+    {
+      "Id": "obj\\Release\\net9.0\\win-x86\\staticwebassets\\msbuild.buildTransitive.Tradinizer.Server.props",
+      "PackagePath": "buildTransitive\\Tradinizer.Server.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

@@ -1,0 +1,10 @@
+{
+"SpaProxyServer": {
+"ServerUrl": "https://localhost:61283",
+"RedirectUrl": "",
+"LaunchCommand": "npm run dev",
+"WorkingDirectory": "C:\\Users\\ITFOLLONIRI\\source\\repos\\Tradinizer\\Tradinizer.Server\\..\\tradinizer.client",
+"MaxTimeoutInSeconds": "120",
+"KeepRunning": "false"
+}
+}

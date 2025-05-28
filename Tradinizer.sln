@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35931.197 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "tradinizer.client", "tradinizer.client\tradinizer.client.esproj", "{65DE0C88-AE1F-FF63-DC9C-778E66590542}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tradinizer.Server", "Tradinizer.Server\Tradinizer.Server.csproj", "{2814374A-C2D8-4B52-A638-C83FE9B2270E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{65DE0C88-AE1F-FF63-DC9C-778E66590542}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65DE0C88-AE1F-FF63-DC9C-778E66590542}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65DE0C88-AE1F-FF63-DC9C-778E66590542}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{65DE0C88-AE1F-FF63-DC9C-778E66590542}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65DE0C88-AE1F-FF63-DC9C-778E66590542}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65DE0C88-AE1F-FF63-DC9C-778E66590542}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{2814374A-C2D8-4B52-A638-C83FE9B2270E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2814374A-C2D8-4B52-A638-C83FE9B2270E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2814374A-C2D8-4B52-A638-C83FE9B2270E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2814374A-C2D8-4B52-A638-C83FE9B2270E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DCA5A4CA-CDBE-42FF-AECB-0FBB2E8A9D81}
+	EndGlobalSection
+EndGlobal

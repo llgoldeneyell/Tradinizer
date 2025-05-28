@@ -1,0 +1,113 @@
+{
+  "Year": 2025,
+  "Investments": [
+    {
+      "id": 1,
+      "Date": "2025-05-06",
+      "Amount": 20,
+      "Type": "ETF",
+      "Name": "MSCI China USD (Acc)"
+    },
+    {
+      "id": 2,
+      "Date": "2025-05-06",
+      "Amount": 20,
+      "Type": "ETF",
+      "Name": "MSCI Japan EUR (Acc)"
+    },
+    {
+      "id": 3,
+      "Date": "2025-05-06",
+      "Amount": 10,
+      "Type": "Azioni",
+      "Name": "Boeing"
+    },
+    {
+      "id": 4,
+      "Date": "2025-05-06",
+      "Amount": 10,
+      "Type": "Azioni",
+      "Name": "IBM"
+    },
+    {
+      "id": 7,
+      "Date": "2025-05-16",
+      "Amount": 20,
+      "Type": "ETF",
+      "Name": "AI \u0026 Big Data USD (Acc)"
+    },
+    {
+      "id": 9,
+      "Date": "2025-05-16",
+      "Amount": 20,
+      "Type": "ETF",
+      "Name": "MSCI UK SRI EUR (Acc)"
+    },
+    {
+      "id": 10,
+      "Date": "2025-05-16",
+      "Amount": 20,
+      "Type": "ETF",
+      "Name": "MSCI China USD (Acc)"
+    }
+  ],
+  "Liquidities": [
+    {
+      "id": 1,
+      "Date": "2025-05-06",
+      "Amount": 56
+    },
+    {
+      "id": 3,
+      "Date": "2025-05-07",
+      "Amount": 55.6
+    },
+    {
+      "id": 4,
+      "Date": "2025-05-08",
+      "Amount": 56.58
+    },
+    {
+      "id": 5,
+      "Date": "2025-05-09",
+      "Amount": 56.48
+    },
+    {
+      "id": 6,
+      "Date": "2025-05-12",
+      "Amount": 58.41
+    },
+    {
+      "id": 7,
+      "Date": "2025-05-13",
+      "Amount": 58.38
+    },
+    {
+      "id": 8,
+      "Date": "2025-05-14",
+      "Amount": 58.38
+    },
+    {
+      "id": 9,
+      "Date": "2025-05-15",
+      "Amount": 58.41
+    },
+    {
+      "id": 10,
+      "Date": "2025-05-16",
+      "Amount": 118.48
+    },
+    {
+      "id": 15,
+      "Date": "2025-05-19",
+      "Amount": 118.02
+    },
+    {
+      "id": 16,
+      "Date": "2025-05-20",
+      "Amount": 118.26
+    }
+  ],
+  "ExitInvestment": 10,
+  "ExitLiquidity": 9.48
+}

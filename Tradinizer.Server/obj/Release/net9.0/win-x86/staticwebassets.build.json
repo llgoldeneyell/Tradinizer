@@ -1,0 +1,1394 @@
+{
+  "Version": 1,
+  "Hash": "5+Fb4+xwUYGS+CrWD5IZ3ZaUg/FdeOyUPorDnw1k6/0=",
+  "Source": "Tradinizer.Server",
+  "BasePath": "_content/Tradinizer.Server",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [
+    {
+      "Identity": "C:\\Users\\ITFOLLONIRI\\source\\repos\\Tradinizer\\tradinizer.client\\tradinizer.client.esproj",
+      "Version": 2,
+      "Source": "tradinizer.client",
+      "GetPublishAssetsTargets": "GetCurrentProjectPublishStaticWebAssetItems",
+      "AdditionalPublishProperties": "Configuration=Release;Platform=AnyCPU",
+      "AdditionalPublishPropertiesToRemove": "WebPublishProfileFile;TargetFramework",
+      "GetBuildAssetsTargets": "GetCurrentProjectBuildStaticWebAssetItems",
+      "AdditionalBuildProperties": "Configuration=Release;Platform=AnyCPU",
+      "AdditionalBuildPropertiesToRemove": "WebPublishProfileFile;TargetFramework"
+    }
+  ],
+  "DiscoveryPatterns": [
+    {
+      "Name": "Tradinizer.Server\\wwwroot",
+      "Source": "Tradinizer.Server",
+      "ContentRoot": "C:\\Users\\ITFOLLONIRI\\source\\repos\\Tradinizer\\Tradinizer.Server\\wwwroot\\",
+      "BasePath": "_content/Tradinizer.Server",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\ITFOLLONIRI\\source\\repos\\Tradinizer\\Tradinizer.Server\\obj\\Release\\net9.0\\win-x86\\compressed\\1ozkmzz0nq-hhl3pcskfj.gz",
+      "SourceId": "Tradinizer.Server",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ITFOLLONIRI\\source\\repos\\Tradinizer\\Tradinizer.Server\\obj\\Release\\net9.0\\win-x86\\compressed\\",
+      "BasePath": "_content/Tradinizer.Server",
+      "RelativePath": "assets/index-BbQTn4lQ#[.{fingerprint=hhl3pcskfj}]?.css.gz",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\ITFOLLONIRI\\source\\repos\\Tradinizer\\Tradinizer.Server\\wwwroot\\assets\\index-BbQTn4lQ.css",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "Fingerprint": "wblanzolen",
+      "Integrity": "fC2ouyMcJ1gL74KwVWYf5NLHVnw8tj4Slk908mQmKAY=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\ITFOLLONIRI\\source\\repos\\Tradinizer\\Tradinizer.Server\\wwwroot\\assets\\index-BbQTn4lQ.css"
+    },
+    {
+      "Identity": "C:\\Users\\ITFOLLONIRI\\source\\repos\\Tradinizer\\Tradinizer.Server\\obj\\Release\\net9.0\\win-x86\\compressed\\5mqsvbscl4-m1uvcizq1g.gz",
+      "SourceId": "Tradinizer.Server",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ITFOLLONIRI\\source\\repos\\Tradinizer\\Tradinizer.Server\\obj\\Release\\net9.0\\win-x86\\compressed\\",
+      "BasePath": "_content/Tradinizer.Server",
+      "RelativePath": "index#[.{fingerprint=m1uvcizq1g}]?.html.gz",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\ITFOLLONIRI\\source\\repos\\Tradinizer\\Tradinizer.Server\\wwwroot\\index.html",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "Fingerprint": "iv4z9z82rc",
+      "Integrity": "kufb2pziEGit13sT4X9SR5p5r2/CAKsL3i85y76VAVI=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\ITFOLLONIRI\\source\\repos\\Tradinizer\\Tradinizer.Server\\wwwroot\\index.html"
+    },
+    {
+      "Identity": "C:\\Users\\ITFOLLONIRI\\source\\repos\\Tradinizer\\Tradinizer.Server\\obj\\Release\\net9.0\\win-x86\\compressed\\d5nkrrq2fl-0iswe6jniq.gz",
+      "SourceId": "Tradinizer.Server",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ITFOLLONIRI\\source\\repos\\Tradinizer\\Tradinizer.Server\\obj\\Release\\net9.0\\win-x86\\compressed\\",
+      "BasePath": "_content/Tradinizer.Server",
+      "RelativePath": "assets/index-DY99ibOV#[.{fingerprint=0iswe6jniq}]?.js.gz",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\ITFOLLONIRI\\source\\repos\\Tradinizer\\Tradinizer.Server\\wwwroot\\assets\\index-DY99ibOV.js",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "Fingerprint": "mutsfwxhgb",
+      "Integrity": "4jrXtUc9ek/Qno5h+h9NNBk9trYdQHaq6pKsZfayajY=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\ITFOLLONIRI\\source\\repos\\Tradinizer\\Tradinizer.Server\\wwwroot\\assets\\index-DY99ibOV.js"
+    },
+    {
+      "Identity": "C:\\Users\\ITFOLLONIRI\\source\\repos\\Tradinizer\\Tradinizer.Server\\obj\\Release\\net9.0\\win-x86\\compressed\\hft2x6x880-69kjnsiwqx.gz",
+      "SourceId": "Tradinizer.Server",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ITFOLLONIRI\\source\\repos\\Tradinizer\\Tradinizer.Server\\obj\\Release\\net9.0\\win-x86\\compressed\\",
+      "BasePath": "_content/Tradinizer.Server",
+      "RelativePath": "vite#[.{fingerprint=69kjnsiwqx}]?.svg.gz",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "C:\\Users\\ITFOLLONIRI\\source\\repos\\Tradinizer\\Tradinizer.Server\\wwwroot\\vite.svg",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "Fingerprint": "xj979drvbl",
+      "Integrity": "42ZKYnnpG2O7vIztmMCZl7s7P7zEVzwp4uJimFruiSY=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\ITFOLLONIRI\\source\\repos\\Tradinizer\\Tradinizer.Server\\wwwroot\\vite.svg"
+    },
+    {
+      "Identity": "C:\\Users\\ITFOLLONIRI\\source\\repos\\Tradinizer\\Tradinizer.Server\\wwwroot\\assets\\index-BbQTn4lQ.css",
+      "SourceId": "Tradinizer.Server",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ITFOLLONIRI\\source\\repos\\Tradinizer\\Tradinizer.Server\\wwwroot\\",
+      "BasePath": "_content/Tradinizer.Server",
+      "RelativePath": "assets/index-BbQTn4lQ#[.{fingerprint}]?.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "hhl3pcskfj",
+      "Integrity": "hbig7WPagYdFtUSSM6m9BchtRyLy5AY7Z8HxKiHmF74=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\index-BbQTn4lQ.css"
+    },
+    {
+      "Identity": "C:\\Users\\ITFOLLONIRI\\source\\repos\\Tradinizer\\Tradinizer.Server\\wwwroot\\assets\\index-DY99ibOV.js",
+      "SourceId": "Tradinizer.Server",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ITFOLLONIRI\\source\\repos\\Tradinizer\\Tradinizer.Server\\wwwroot\\",
+      "BasePath": "_content/Tradinizer.Server",
+      "RelativePath": "assets/index-DY99ibOV#[.{fingerprint}]?.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "0iswe6jniq",
+      "Integrity": "SO5dl3hZ29F4ryuACszxEvp9tBKA3os3q6bBRv7lStc=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\index-DY99ibOV.js"
+    },
+    {
+      "Identity": "C:\\Users\\ITFOLLONIRI\\source\\repos\\Tradinizer\\Tradinizer.Server\\wwwroot\\index.html",
+      "SourceId": "Tradinizer.Server",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ITFOLLONIRI\\source\\repos\\Tradinizer\\Tradinizer.Server\\wwwroot\\",
+      "BasePath": "_content/Tradinizer.Server",
+      "RelativePath": "index#[.{fingerprint}]?.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "m1uvcizq1g",
+      "Integrity": "JpKjTDWhKeDW1mjBrILCTJuXjxhcwGpePNWqg1ZdOJY=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\index.html"
+    },
+    {
+      "Identity": "C:\\Users\\ITFOLLONIRI\\source\\repos\\Tradinizer\\Tradinizer.Server\\wwwroot\\vite.svg",
+      "SourceId": "Tradinizer.Server",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ITFOLLONIRI\\source\\repos\\Tradinizer\\Tradinizer.Server\\wwwroot\\",
+      "BasePath": "_content/Tradinizer.Server",
+      "RelativePath": "vite#[.{fingerprint}]?.svg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "69kjnsiwqx",
+      "Integrity": "SnSK/UQ5GLsWWRyDTEAdrjPoeGGrXbrQgRw6O0qSFPs=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\vite.svg"
+    }
+  ],
+  "Endpoints": [
+    {
+      "Route": "assets/index-BbQTn4lQ.css",
+      "AssetFile": "C:\\Users\\ITFOLLONIRI\\source\\repos\\Tradinizer\\Tradinizer.Server\\obj\\Release\\net9.0\\win-x86\\compressed\\1ozkmzz0nq-hhl3pcskfj.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000031861339"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "31385"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"fC2ouyMcJ1gL74KwVWYf5NLHVnw8tj4Slk908mQmKAY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 20 May 2025 12:24:55 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"hbig7WPagYdFtUSSM6m9BchtRyLy5AY7Z8HxKiHmF74=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-hbig7WPagYdFtUSSM6m9BchtRyLy5AY7Z8HxKiHmF74="
+        }
+      ]
+    },
+    {
+      "Route": "assets/index-BbQTn4lQ.css",
+      "AssetFile": "C:\\Users\\ITFOLLONIRI\\source\\repos\\Tradinizer\\Tradinizer.Server\\wwwroot\\assets\\index-BbQTn4lQ.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "232261"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"hbig7WPagYdFtUSSM6m9BchtRyLy5AY7Z8HxKiHmF74=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 20 May 2025 12:24:55 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-hbig7WPagYdFtUSSM6m9BchtRyLy5AY7Z8HxKiHmF74="
+        }
+      ]
+    },
+    {
+      "Route": "assets/index-BbQTn4lQ.css.gz",
+      "AssetFile": "C:\\Users\\ITFOLLONIRI\\source\\repos\\Tradinizer\\Tradinizer.Server\\obj\\Release\\net9.0\\win-x86\\compressed\\1ozkmzz0nq-hhl3pcskfj.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "31385"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"fC2ouyMcJ1gL74KwVWYf5NLHVnw8tj4Slk908mQmKAY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 20 May 2025 12:24:55 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-fC2ouyMcJ1gL74KwVWYf5NLHVnw8tj4Slk908mQmKAY="
+        }
+      ]
+    },
+    {
+      "Route": "assets/index-BbQTn4lQ.hhl3pcskfj.css",
+      "AssetFile": "C:\\Users\\ITFOLLONIRI\\source\\repos\\Tradinizer\\Tradinizer.Server\\obj\\Release\\net9.0\\win-x86\\compressed\\1ozkmzz0nq-hhl3pcskfj.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000031861339"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "31385"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"fC2ouyMcJ1gL74KwVWYf5NLHVnw8tj4Slk908mQmKAY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 20 May 2025 12:24:55 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"hbig7WPagYdFtUSSM6m9BchtRyLy5AY7Z8HxKiHmF74=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "hhl3pcskfj"
+        },
+        {
+          "Name": "label",
+          "Value": "assets/index-BbQTn4lQ.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-hbig7WPagYdFtUSSM6m9BchtRyLy5AY7Z8HxKiHmF74="
+        }
+      ]
+    },
+    {
+      "Route": "assets/index-BbQTn4lQ.hhl3pcskfj.css",
+      "AssetFile": "C:\\Users\\ITFOLLONIRI\\source\\repos\\Tradinizer\\Tradinizer.Server\\wwwroot\\assets\\index-BbQTn4lQ.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "232261"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"hbig7WPagYdFtUSSM6m9BchtRyLy5AY7Z8HxKiHmF74=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 20 May 2025 12:24:55 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "hhl3pcskfj"
+        },
+        {
+          "Name": "label",
+          "Value": "assets/index-BbQTn4lQ.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-hbig7WPagYdFtUSSM6m9BchtRyLy5AY7Z8HxKiHmF74="
+        }
+      ]
+    },
+    {
+      "Route": "assets/index-BbQTn4lQ.hhl3pcskfj.css.gz",
+      "AssetFile": "C:\\Users\\ITFOLLONIRI\\source\\repos\\Tradinizer\\Tradinizer.Server\\obj\\Release\\net9.0\\win-x86\\compressed\\1ozkmzz0nq-hhl3pcskfj.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "31385"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"fC2ouyMcJ1gL74KwVWYf5NLHVnw8tj4Slk908mQmKAY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 20 May 2025 12:24:55 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "hhl3pcskfj"
+        },
+        {
+          "Name": "label",
+          "Value": "assets/index-BbQTn4lQ.css.gz"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-fC2ouyMcJ1gL74KwVWYf5NLHVnw8tj4Slk908mQmKAY="
+        }
+      ]
+    },
+    {
+      "Route": "assets/index-DY99ibOV.0iswe6jniq.js",
+      "AssetFile": "C:\\Users\\ITFOLLONIRI\\source\\repos\\Tradinizer\\Tradinizer.Server\\obj\\Release\\net9.0\\win-x86\\compressed\\d5nkrrq2fl-0iswe6jniq.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000007588808"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "131772"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"4jrXtUc9ek/Qno5h+h9NNBk9trYdQHaq6pKsZfayajY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 20 May 2025 12:24:55 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"SO5dl3hZ29F4ryuACszxEvp9tBKA3os3q6bBRv7lStc=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "0iswe6jniq"
+        },
+        {
+          "Name": "label",
+          "Value": "assets/index-DY99ibOV.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-SO5dl3hZ29F4ryuACszxEvp9tBKA3os3q6bBRv7lStc="
+        }
+      ]
+    },
+    {
+      "Route": "assets/index-DY99ibOV.0iswe6jniq.js",
+      "AssetFile": "C:\\Users\\ITFOLLONIRI\\source\\repos\\Tradinizer\\Tradinizer.Server\\wwwroot\\assets\\index-DY99ibOV.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "399315"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"SO5dl3hZ29F4ryuACszxEvp9tBKA3os3q6bBRv7lStc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 20 May 2025 12:24:55 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "0iswe6jniq"
+        },
+        {
+          "Name": "label",
+          "Value": "assets/index-DY99ibOV.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-SO5dl3hZ29F4ryuACszxEvp9tBKA3os3q6bBRv7lStc="
+        }
+      ]
+    },
+    {
+      "Route": "assets/index-DY99ibOV.0iswe6jniq.js.gz",
+      "AssetFile": "C:\\Users\\ITFOLLONIRI\\source\\repos\\Tradinizer\\Tradinizer.Server\\obj\\Release\\net9.0\\win-x86\\compressed\\d5nkrrq2fl-0iswe6jniq.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "131772"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"4jrXtUc9ek/Qno5h+h9NNBk9trYdQHaq6pKsZfayajY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 20 May 2025 12:24:55 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "0iswe6jniq"
+        },
+        {
+          "Name": "label",
+          "Value": "assets/index-DY99ibOV.js.gz"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-4jrXtUc9ek/Qno5h+h9NNBk9trYdQHaq6pKsZfayajY="
+        }
+      ]
+    },
+    {
+      "Route": "assets/index-DY99ibOV.js",
+      "AssetFile": "C:\\Users\\ITFOLLONIRI\\source\\repos\\Tradinizer\\Tradinizer.Server\\obj\\Release\\net9.0\\win-x86\\compressed\\d5nkrrq2fl-0iswe6jniq.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000007588808"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "131772"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"4jrXtUc9ek/Qno5h+h9NNBk9trYdQHaq6pKsZfayajY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 20 May 2025 12:24:55 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"SO5dl3hZ29F4ryuACszxEvp9tBKA3os3q6bBRv7lStc=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-SO5dl3hZ29F4ryuACszxEvp9tBKA3os3q6bBRv7lStc="
+        }
+      ]
+    },
+    {
+      "Route": "assets/index-DY99ibOV.js",
+      "AssetFile": "C:\\Users\\ITFOLLONIRI\\source\\repos\\Tradinizer\\Tradinizer.Server\\wwwroot\\assets\\index-DY99ibOV.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "399315"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"SO5dl3hZ29F4ryuACszxEvp9tBKA3os3q6bBRv7lStc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 20 May 2025 12:24:55 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-SO5dl3hZ29F4ryuACszxEvp9tBKA3os3q6bBRv7lStc="
+        }
+      ]
+    },
+    {
+      "Route": "assets/index-DY99ibOV.js.gz",
+      "AssetFile": "C:\\Users\\ITFOLLONIRI\\source\\repos\\Tradinizer\\Tradinizer.Server\\obj\\Release\\net9.0\\win-x86\\compressed\\d5nkrrq2fl-0iswe6jniq.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "131772"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"4jrXtUc9ek/Qno5h+h9NNBk9trYdQHaq6pKsZfayajY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 20 May 2025 12:24:55 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-4jrXtUc9ek/Qno5h+h9NNBk9trYdQHaq6pKsZfayajY="
+        }
+      ]
+    },
+    {
+      "Route": "index.html",
+      "AssetFile": "C:\\Users\\ITFOLLONIRI\\source\\repos\\Tradinizer\\Tradinizer.Server\\obj\\Release\\net9.0\\win-x86\\compressed\\5mqsvbscl4-m1uvcizq1g.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.002881844380"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "346"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"kufb2pziEGit13sT4X9SR5p5r2/CAKsL3i85y76VAVI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 20 May 2025 12:24:55 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"JpKjTDWhKeDW1mjBrILCTJuXjxhcwGpePNWqg1ZdOJY=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-JpKjTDWhKeDW1mjBrILCTJuXjxhcwGpePNWqg1ZdOJY="
+        }
+      ]
+    },
+    {
+      "Route": "index.html",
+      "AssetFile": "C:\\Users\\ITFOLLONIRI\\source\\repos\\Tradinizer\\Tradinizer.Server\\wwwroot\\index.html",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "551"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"JpKjTDWhKeDW1mjBrILCTJuXjxhcwGpePNWqg1ZdOJY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 20 May 2025 12:24:55 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-JpKjTDWhKeDW1mjBrILCTJuXjxhcwGpePNWqg1ZdOJY="
+        }
+      ]
+    },
+    {
+      "Route": "index.html.gz",
+      "AssetFile": "C:\\Users\\ITFOLLONIRI\\source\\repos\\Tradinizer\\Tradinizer.Server\\obj\\Release\\net9.0\\win-x86\\compressed\\5mqsvbscl4-m1uvcizq1g.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "346"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"kufb2pziEGit13sT4X9SR5p5r2/CAKsL3i85y76VAVI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 20 May 2025 12:24:55 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-kufb2pziEGit13sT4X9SR5p5r2/CAKsL3i85y76VAVI="
+        }
+      ]
+    },
+    {
+      "Route": "index.m1uvcizq1g.html",
+      "AssetFile": "C:\\Users\\ITFOLLONIRI\\source\\repos\\Tradinizer\\Tradinizer.Server\\obj\\Release\\net9.0\\win-x86\\compressed\\5mqsvbscl4-m1uvcizq1g.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.002881844380"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "346"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"kufb2pziEGit13sT4X9SR5p5r2/CAKsL3i85y76VAVI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 20 May 2025 12:24:55 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"JpKjTDWhKeDW1mjBrILCTJuXjxhcwGpePNWqg1ZdOJY=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "m1uvcizq1g"
+        },
+        {
+          "Name": "label",
+          "Value": "index.html"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-JpKjTDWhKeDW1mjBrILCTJuXjxhcwGpePNWqg1ZdOJY="
+        }
+      ]
+    },
+    {
+      "Route": "index.m1uvcizq1g.html",
+      "AssetFile": "C:\\Users\\ITFOLLONIRI\\source\\repos\\Tradinizer\\Tradinizer.Server\\wwwroot\\index.html",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "551"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"JpKjTDWhKeDW1mjBrILCTJuXjxhcwGpePNWqg1ZdOJY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 20 May 2025 12:24:55 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "m1uvcizq1g"
+        },
+        {
+          "Name": "label",
+          "Value": "index.html"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-JpKjTDWhKeDW1mjBrILCTJuXjxhcwGpePNWqg1ZdOJY="
+        }
+      ]
+    },
+    {
+      "Route": "index.m1uvcizq1g.html.gz",
+      "AssetFile": "C:\\Users\\ITFOLLONIRI\\source\\repos\\Tradinizer\\Tradinizer.Server\\obj\\Release\\net9.0\\win-x86\\compressed\\5mqsvbscl4-m1uvcizq1g.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "346"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"kufb2pziEGit13sT4X9SR5p5r2/CAKsL3i85y76VAVI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 20 May 2025 12:24:55 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "m1uvcizq1g"
+        },
+        {
+          "Name": "label",
+          "Value": "index.html.gz"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-kufb2pziEGit13sT4X9SR5p5r2/CAKsL3i85y76VAVI="
+        }
+      ]
+    },
+    {
+      "Route": "vite.69kjnsiwqx.svg",
+      "AssetFile": "C:\\Users\\ITFOLLONIRI\\source\\repos\\Tradinizer\\Tradinizer.Server\\obj\\Release\\net9.0\\win-x86\\compressed\\hft2x6x880-69kjnsiwqx.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.001295336788"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "771"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"42ZKYnnpG2O7vIztmMCZl7s7P7zEVzwp4uJimFruiSY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 12 May 2025 11:07:57 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/svg+xml"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"SnSK/UQ5GLsWWRyDTEAdrjPoeGGrXbrQgRw6O0qSFPs=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "69kjnsiwqx"
+        },
+        {
+          "Name": "label",
+          "Value": "vite.svg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-SnSK/UQ5GLsWWRyDTEAdrjPoeGGrXbrQgRw6O0qSFPs="
+        }
+      ]
+    },
+    {
+      "Route": "vite.69kjnsiwqx.svg",
+      "AssetFile": "C:\\Users\\ITFOLLONIRI\\source\\repos\\Tradinizer\\Tradinizer.Server\\wwwroot\\vite.svg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1497"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/svg+xml"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"SnSK/UQ5GLsWWRyDTEAdrjPoeGGrXbrQgRw6O0qSFPs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 12 May 2025 11:07:57 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "69kjnsiwqx"
+        },
+        {
+          "Name": "label",
+          "Value": "vite.svg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-SnSK/UQ5GLsWWRyDTEAdrjPoeGGrXbrQgRw6O0qSFPs="
+        }
+      ]
+    },
+    {
+      "Route": "vite.69kjnsiwqx.svg.gz",
+      "AssetFile": "C:\\Users\\ITFOLLONIRI\\source\\repos\\Tradinizer\\Tradinizer.Server\\obj\\Release\\net9.0\\win-x86\\compressed\\hft2x6x880-69kjnsiwqx.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "771"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/svg+xml"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"42ZKYnnpG2O7vIztmMCZl7s7P7zEVzwp4uJimFruiSY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 12 May 2025 11:07:57 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "69kjnsiwqx"
+        },
+        {
+          "Name": "label",
+          "Value": "vite.svg.gz"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-42ZKYnnpG2O7vIztmMCZl7s7P7zEVzwp4uJimFruiSY="
+        }
+      ]
+    },
+    {
+      "Route": "vite.svg",
+      "AssetFile": "C:\\Users\\ITFOLLONIRI\\source\\repos\\Tradinizer\\Tradinizer.Server\\obj\\Release\\net9.0\\win-x86\\compressed\\hft2x6x880-69kjnsiwqx.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.001295336788"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "771"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"42ZKYnnpG2O7vIztmMCZl7s7P7zEVzwp4uJimFruiSY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 12 May 2025 11:07:57 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/svg+xml"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"SnSK/UQ5GLsWWRyDTEAdrjPoeGGrXbrQgRw6O0qSFPs=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-SnSK/UQ5GLsWWRyDTEAdrjPoeGGrXbrQgRw6O0qSFPs="
+        }
+      ]
+    },
+    {
+      "Route": "vite.svg",
+      "AssetFile": "C:\\Users\\ITFOLLONIRI\\source\\repos\\Tradinizer\\Tradinizer.Server\\wwwroot\\vite.svg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1497"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/svg+xml"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"SnSK/UQ5GLsWWRyDTEAdrjPoeGGrXbrQgRw6O0qSFPs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 12 May 2025 11:07:57 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-SnSK/UQ5GLsWWRyDTEAdrjPoeGGrXbrQgRw6O0qSFPs="
+        }
+      ]
+    },
+    {
+      "Route": "vite.svg.gz",
+      "AssetFile": "C:\\Users\\ITFOLLONIRI\\source\\repos\\Tradinizer\\Tradinizer.Server\\obj\\Release\\net9.0\\win-x86\\compressed\\hft2x6x880-69kjnsiwqx.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "771"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/svg+xml"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"42ZKYnnpG2O7vIztmMCZl7s7P7zEVzwp4uJimFruiSY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 12 May 2025 11:07:57 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-42ZKYnnpG2O7vIztmMCZl7s7P7zEVzwp4uJimFruiSY="
+        }
+      ]
+    }
+  ]
+}
