@@ -2,8 +2,8 @@
 <!-- https://go.microsoft.com/fwlink/?LinkID=208121. -->
 <Project>
   <PropertyGroup>
-    <_PublishTargetUrl>C:\Users\ITFOLLONIRI\source\repos\Tradinizer\Tradinizer.Server\bin\Release\net9.0\publish\</_PublishTargetUrl>
-    <History>True|2025-05-20T13:56:34.5820201Z||;True|2025-05-20T14:37:54.5932464+02:00||;</History>
+    <_PublishTargetUrl>D:\Developer\VS\Tradinizer\publish</_PublishTargetUrl>
+    <History>True|2025-05-29T06:27:42.0903238Z||;True|2025-05-29T08:20:25.2875863+02:00||;True|2025-05-20T15:56:34.5820201+02:00||;True|2025-05-20T14:37:54.5932464+02:00||;</History>
     <LastFailureDetails />
   </PropertyGroup>
 </Project>
