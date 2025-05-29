@@ -10,5 +10,5 @@ Tradinizer.Server/bin
 Tradinizer.Server/obj
 
 # Altri file che vuoi ignorare
-/.vs
+.vs/
 *.log
