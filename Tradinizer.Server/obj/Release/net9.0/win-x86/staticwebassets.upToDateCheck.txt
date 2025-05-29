@@ -1,8 +1,0 @@
-C:\Users\ITFOLLONIRI\source\repos\Tradinizer\Tradinizer.Server\wwwroot\assets\index-BbQTn4lQ.css
-C:\Users\ITFOLLONIRI\source\repos\Tradinizer\Tradinizer.Server\wwwroot\index.html
-C:\Users\ITFOLLONIRI\source\repos\Tradinizer\Tradinizer.Server\wwwroot\assets\index-DY99ibOV.js
-C:\Users\ITFOLLONIRI\source\repos\Tradinizer\Tradinizer.Server\wwwroot\vite.svg
-wwwroot\assets\index-BbQTn4lQ.css
-wwwroot\assets\index-DY99ibOV.js
-wwwroot\index.html
-wwwroot\vite.svg
