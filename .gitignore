@@ -1,0 +1,14 @@
+# Ignora node_modules (dipendenze React)
+tradinizer.client\node_modules/
+
+# Ignora cartelle di build React
+tradinizer.client\dist
+
+# Ignora cartelle di publish del backend (se hai una cartella specifica)
+publish/
+Tradinizer.Server/bin
+Tradinizer.Server/obj
+
+# Altri file che vuoi ignorare
+/.vs
+*.log
