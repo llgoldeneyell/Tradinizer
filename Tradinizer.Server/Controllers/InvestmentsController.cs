@@ -167,6 +167,7 @@ namespace Tradinizer.Server.Controllers
         private List<string> LoadYears()
         {
             var directory = Path.Combine(Directory.GetCurrentDirectory(), "Data");
+            if (!Directory.Exists(directory)) return new List<string>();
             string[] filePaths = Directory.GetFiles(directory, "*.json");
 
             List<string> years = new List<string>();

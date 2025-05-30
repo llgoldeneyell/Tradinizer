@@ -1,4 +1,5 @@
 ﻿using System.Text.Json.Serialization;
+using Tradinizer.Server.Models;
 
 public class Investment
 {
@@ -12,4 +13,7 @@ public class Investment
     public string Type { get; set; } = string.Empty;
 
     public string Name { get; set; } = string.Empty;
+
+    public int YearDataId { get; set; }
+    public YearData YearData { get; set; } = null!;
 }

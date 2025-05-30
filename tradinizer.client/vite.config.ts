@@ -54,8 +54,13 @@ export default defineConfig({
             '^/chartData': {
                 target,
                 secure: false
+            },
+            '^/years': {
+                target,
+                secure: false
             }
         },
+        host: true,
         port: parseInt(env.DEV_SERVER_PORT || '61283'),
         https: {
             key: fs.readFileSync(keyFilePath),

@@ -1,5 +1,7 @@
 ﻿
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
+using Tradinizer.Server.Helpers;
 
 namespace Tradinizer.Server
 {
@@ -15,12 +17,15 @@ namespace Tradinizer.Server
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
             builder.Services.AddOpenApi();
 
-            int port = builder.Configuration.GetValue<int>("AppSettings:Port", 5000);
+            //int port = builder.Configuration.GetValue<int>("AppSettings:Port", 5000);
 
-            builder.WebHost.ConfigureKestrel(options =>
-            {
-                options.ListenLocalhost(port);
-            });
+            //builder.WebHost.ConfigureKestrel(options =>
+            //{
+            //    options.ListenLocalhost(port);
+            //});
+
+            builder.Services.AddDbContext<AppDbContext>(options =>
+                options.UseSqlite("Data Source=tradinizer.db"));
 
             var app = builder.Build();
 

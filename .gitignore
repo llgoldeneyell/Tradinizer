@@ -2,12 +2,14 @@
 tradinizer.client\node_modules/
 
 # Ignora cartelle di build React
-tradinizer.client\dist
+tradinizer.client/dist
+tradinizer.client/obj
 
 # Ignora cartelle di publish del backend (se hai una cartella specifica)
 publish/
 Tradinizer.Server/bin
 Tradinizer.Server/obj
+Tradinizer.Server/Data
 
 # Altri file che vuoi ignorare
 .vs/
