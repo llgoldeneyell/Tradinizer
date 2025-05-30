@@ -58,6 +58,10 @@ export default defineConfig({
             '^/years': {
                 target,
                 secure: false
+            },
+            '^/auth': {
+                target,
+                secure: false
             }
         },
         host: true,

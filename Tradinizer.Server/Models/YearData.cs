@@ -4,6 +4,8 @@
     {
         public int Id { get; set; }
         public int Year { get; set; }
+        public string ApplicationUserId { get; set; }  // FK all’utente
+        public ApplicationUser ApplicationUser { get; set; }
         public List<Investment> Investments { get; set; } = new();
         public List<LiquidityData> Liquidities { get; set; } = new();
         public decimal ExitInvestment { get; set; }

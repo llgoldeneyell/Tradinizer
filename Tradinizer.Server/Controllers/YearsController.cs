@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
 using Tradinizer.Server.Helpers;
 using Tradinizer.Server.Models;
 
@@ -7,6 +9,7 @@ namespace Tradinizer.Server.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+    [Authorize] // Tutte le azioni richiedono autenticazione
     public class YearsController : ControllerBase
     {
         private readonly AppDbContext _context;
@@ -14,6 +17,12 @@ namespace Tradinizer.Server.Controllers
         public YearsController(AppDbContext context)
         {
             _context = context;
+        }
+
+        private string GetUserId()
+        {
+            var claims = User.Claims.Select(c => new { c.Type, c.Value }).ToList();
+            return User.FindFirst(ClaimTypes.NameIdentifier)?.Value!;
         }
 
         // DTO (puoi metterlo in un file separato se vuoi)
@@ -46,11 +55,17 @@ namespace Tradinizer.Server.Controllers
             if (dto == null)
                 return BadRequest("Dati mancanti");
 
+            var userId = GetUserId(); 
+            var userExists = await _context.Users.AnyAsync(u => u.Id == userId);
+            if (!userExists)
+                return Unauthorized("Utente non trovato nel database.");
+
             var yearData = new YearData
             {
                 Year = dto.Year,
                 ExitInvestment = dto.ExitInvestment,
                 ExitLiquidity = dto.ExitLiquidity,
+                ApplicationUserId = userId, // COLLEGA L'UTENTE!
                 Investments = dto.Investments?.Select(i => new Investment
                 {
                     Date = i.Date,
@@ -74,10 +89,11 @@ namespace Tradinizer.Server.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetYear(int id)
         {
+            var userId = GetUserId();
             var yearData = await _context.Years
                 .Include(y => y.Investments)
                 .Include(y => y.Liquidities)
-                .FirstOrDefaultAsync(y => y.Id == id);
+                .FirstOrDefaultAsync(y => y.Id == id && y.ApplicationUserId == userId);
 
             if (yearData == null)
                 return NotFound();
@@ -89,7 +105,9 @@ namespace Tradinizer.Server.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllYears()
         {
+            var userId = GetUserId();
             var years = await _context.Years
+                .Where(y => y.ApplicationUserId == userId) // 👈 Filtra per utente
                 .OrderBy(y => y.Year)
                 .Select(y => y.Year.ToString())
                 .ToListAsync();
