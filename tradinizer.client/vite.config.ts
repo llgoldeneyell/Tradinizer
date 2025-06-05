@@ -54,6 +54,18 @@ export default defineConfig({
             '^/year': {
                 target,
                 secure: false
+            },
+            '^/liquidity': {
+                target,
+                secure: false
+            },
+            '^/investment': {
+                target,
+                secure: false
+            },
+            '^/chartData': {
+                target,
+                secure: false
             }
         },
         port: parseInt(env.DEV_SERVER_PORT || '60375'),

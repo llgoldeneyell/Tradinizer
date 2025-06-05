@@ -93,17 +93,17 @@ namespace Tradinizer.Server.Controllers
         }
 
         // DELETE: api/year/{id}
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteYear(int id)
+        [HttpDelete("{year}")]
+        public async Task<IActionResult> DeleteYear(int year)
         {
             var userId = _userManager.GetUserId(User);
-            var year = await _context.YearsData
-                .FirstOrDefaultAsync(y => y.Id == id && y.ApplicationUserId == userId);
+            var yearData = await _context.YearsData
+                .FirstOrDefaultAsync(y => y.Year == year && y.ApplicationUserId == userId);
 
-            if (year == null)
+            if (yearData == null)
                 return NotFound();
 
-            _context.YearsData.Remove(year);
+            _context.YearsData.Remove(yearData);
             await _context.SaveChangesAsync();
 
             return NoContent();

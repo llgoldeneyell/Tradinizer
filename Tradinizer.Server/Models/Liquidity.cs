@@ -1,4 +1,6 @@
-﻿namespace Tradinizer.Server.Models
+﻿using System.Text.Json.Serialization;
+
+namespace Tradinizer.Server.Models
 {
     public class Liquidity
     {
@@ -8,6 +10,7 @@
 
         // FK verso YearData
         public int YearDataId { get; set; }
+        [JsonIgnore]
         public YearData YearData { get; set; }
     }
 

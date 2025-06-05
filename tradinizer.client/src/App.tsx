@@ -1,4 +1,5 @@
 ﻿import HomePage from './pages/HomePage';
+import Dashboard from './pages/Dashboard';
 import { Button, Modal, Form } from "react-bootstrap";
 import { Navbar, Container } from "react-bootstrap";
 import { useState, useEffect, useCallback } from "react";
@@ -6,11 +7,18 @@ import './App.css';
 
 let tokenMissingLogged = false;  // variabile esterna al componente/funzione
 
+const getToken = (): string | null => {
+    return sessionStorage.getItem('token') || localStorage.getItem('token');
+};
+
 function App() {
     const [token, setToken] = useState<string | null>(null);
 
     const [showAddYearModal, setShowAddYearModal] = useState(false);
     const [newYear, setNewYear] = useState(new Date().getFullYear());
+
+    const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
+
 
     const [year, setYear] = useState<number>(new Date().getFullYear());
     const [years, setYears] = useState([]);
@@ -19,7 +27,7 @@ function App() {
     const loadYears = useCallback(async (retryCount = 0) => {
         try {
             setError(false);
-            const token = sessionStorage.getItem('token');  // Recupera il token salvato
+            const token = getToken();  // Recupera il token salvato
 
             if (!token) {
                 if (!tokenMissingLogged) {
@@ -54,7 +62,7 @@ function App() {
 
     const handleAddYear = async () => {
         try {
-            const token = sessionStorage.getItem('token');
+            const token = getToken();  
             const response = await fetch(`/year`, {
                 method: "POST",
                 headers: {
@@ -78,9 +86,43 @@ function App() {
         }
     };
 
+    const handleDeleteYear = async () => {
+        try {
+            const token = getToken();  
+            const response = await fetch(`/year/${year}`, {
+                method: "DELETE",
+                headers: {
+                    "Authorization": `Bearer ${token}`,
+                    "Content-Type": "application/json"
+                }
+            });
+
+            setShowDeleteConfirm(false);
+
+            if (!response.ok) {
+                const errorText = await response.text();
+                console.error("Errore durante l'eliminazione:", response.status, errorText);
+                return;
+            }
+
+            // Ricarica gli anni e aggiorna l'anno attivo (ad esempio al più recente)
+            await loadYears();
+            if (years.length > 1) {
+                const remainingYears = years.filter(y => y !== year);
+                const mostRecent = Math.max(...remainingYears);
+                setYear(mostRecent);
+            } else {
+                setYear(new Date().getFullYear());
+            }
+
+        } catch (error) {
+            console.error("Errore eliminazione anno:", error);
+        }
+    };
+
     useEffect(() => {
         loadYears();
-    }, [loadYears]);
+    }, [loadYears, token]);
 
     useEffect(() => {
         const storedToken = sessionStorage.getItem("token") || localStorage.getItem("token");
@@ -112,6 +154,7 @@ function App() {
                                     ))}
                                 </Form.Select>
                                 <Button variant="outline-primary" onClick={() => setShowAddYearModal(true)}>+</Button>
+                                <Button variant="outline-danger" onClick={() => setShowDeleteConfirm(true)}>-</Button>
                                 <Button variant="outline-danger" onClick={handleLogout}>Logout</Button>
                             </>
                         )}
@@ -145,14 +188,36 @@ function App() {
                 </Modal.Footer>
             </Modal>
 
-            <HomePage onLogin={(newToken) => setToken(newToken)} />
+            <Modal show={showDeleteConfirm} onHide={() => setShowDeleteConfirm(false)}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Conferma Eliminazione</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    Sei sicuro di voler eliminare l’anno <strong>{year}</strong>? Questa azione non è reversibile.
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={() => setShowDeleteConfirm(false)}>
+                        Annulla
+                    </Button>
+                    <Button variant="danger" onClick={handleDeleteYear}>
+                        Elimina
+                    </Button>
+                </Modal.Footer>
+            </Modal>
 
-            {/*{token ? (*/}
-            {/*    /* <InvestmentEntry />*/}
-            {/*    /*<Dashboard year={year} />*/}
-            {/*) : (*/}
-            {/*    <HomePage onLogin={(newToken) => setToken(newToken)} />*/}
-            {/*)}*/}
+
+            {error && (
+                <div style={{ color: "red", margin: "1em 0" }}>
+                    Errore nel caricamento degli anni. Riprova più tardi.
+                </div>
+            )}
+
+            {token ? (
+                /*<InvestmentEntry />*/
+                <Dashboard year={year} token={token} />
+            ) : (
+                <HomePage onLogin={(newToken) => setToken(newToken)} />
+            )}
         </div>
     );
 }

@@ -1,0 +1,107 @@
+﻿// src/pages/Dashboard.tsx
+
+import { useState, useEffect, useCallback } from "react";
+import FinancialChart from "../components/FinancialChart";
+import LiquidityTable from "../components/LiquidityTable";
+//import InvestmentTable from "../Components/InvestmentTable";
+interface Investment {
+    id?: number;
+    date: string;
+    amount: number;
+    type: string;
+    name: string;
+}
+
+interface Liquidity {
+    id?: number;
+    date: string;
+    amount: number;
+}
+
+interface DashboardProps {
+    year: number;
+    token: string;
+}
+
+export default function Dashboard({ year, token }: DashboardProps) {
+    const [investments, setInvestments] = useState<Investment[]>([]);
+    const [liquidities, setLiquidities] = useState<Liquidity[]>([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(false);
+
+    const loadInvestments = useCallback(async (retryCount = 0) => {
+        try {
+            setLoading(true);
+            setError(false);
+            const response = await fetch(`/investment/${year}`, {
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                }
+            });
+            if (!response.ok) throw new Error("Server error");
+
+            const data = await response.json();
+            setInvestments(data);
+            setLoading(false);
+        } catch (err) {
+            if (retryCount < 5) {
+                setTimeout(() => loadInvestments(retryCount + 1), 1000);
+            } else {
+                setError(true);
+                setLoading(false);
+                console.log("Errore nel caricamento:", err);
+            }
+        }
+    }, [year]);
+
+    const loadLiquidity = useCallback(async (retryCount = 0) => {
+        try {
+            const response = await fetch(`/liquidity/${year}`, {
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                }
+            });
+            if (!response.ok) {
+                // Leggi il testo o JSON di errore dalla risposta
+                const errorText = await response.text();
+                console.error("Errore server:", response.status, errorText);
+                throw new Error(errorText);
+            }
+
+            const data = await response.json();
+            setLiquidities(data);
+        } catch (err) {
+            if (retryCount < 5) {
+                setTimeout(() => loadLiquidity(retryCount + 1), 1000);
+            } else {
+                console.error("Errore definitivo nel caricamento della liquidità:", err);
+            }
+        }
+    }, [year]);
+
+    useEffect(() => {
+        loadInvestments();
+        loadLiquidity();
+    }, [loadInvestments, loadLiquidity]);
+
+
+    return (
+        <div className="container-fluid mt-4">
+            <div className="row">
+                <div className="col-lg-6 mb-3">
+                    <div className="border rounded p-3 bg-white shadow-sm h-100">
+                        <FinancialChart investments={investments} liquidities={liquidities} year={year} token={token} />
+                    </div>
+                </div>
+                <div className="col-lg-3 mb-3">
+                    <LiquidityTable year={year} loading={loading} error={error} liquidities={liquidities} reloadLiquidity={loadLiquidity} token={token} />
+                </div>
+                {/*<div className="col-lg-3 mb-3">*/}
+                {/*    <InvestmentTable />*/}
+                {/*</div>*/}
+            </div>
+        </div>
+    );
+}
