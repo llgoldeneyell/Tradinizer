@@ -117,7 +117,7 @@ namespace Tradinizer.Server
                         var name = context.Principal?.Identity?.Name ?? "utente sconosciuto";
                         Console.WriteLine("Token validato per: " + name);
                         return Task.CompletedTask;
-                    };
+                    }
                 };
             });
 
