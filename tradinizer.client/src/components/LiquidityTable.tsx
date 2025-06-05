@@ -1,4 +1,4 @@
-﻿import { useState, useEffect, useCallback } from "react";
+﻿import { useState, useEffect} from "react";
 import { Modal, Button, Form } from "react-bootstrap";
 import FinanceTable from "./FinanceTable";
 
@@ -51,14 +51,23 @@ export default function LiquidityTable({ year, loading, error, liquidities, relo
 
     const handleDeleteLiquidity = async (item: Liquidity) => {
         try {
-            await fetch(`/investments/liquidity/${year}/${item.id}`, {
+            await fetch(`/liquidity/${year}/${item.id}`, {
                 method: "DELETE",
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                },
             });
             reloadLiquidity();
         } catch (err) {
             console.error("Errore eliminazione liquidità:", err);
         }
     };
+
+    useEffect(() => {
+        reloadLiquidity();
+    }, [year]);
+
 
     return (
         <>

@@ -143,7 +143,7 @@ namespace Tradinizer.Server.Controllers
                 .FirstOrDefaultAsync(y => y.Year == year && y.ApplicationUserId == userId);
 
             if (yearData == null)
-                throw new KeyNotFoundException($"YearData not found for year {year} and user {userId}.");
+                yearData = new YearData();
 
             return yearData;
         }

@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback } from "react";
 import FinancialChart from "../components/FinancialChart";
 import LiquidityTable from "../components/LiquidityTable";
-//import InvestmentTable from "../Components/InvestmentTable";
+import InvestmentTable from "../components/InvestmentTable";
 interface Investment {
     id?: number;
     date: string;
@@ -26,37 +26,47 @@ interface DashboardProps {
 export default function Dashboard({ year, token }: DashboardProps) {
     const [investments, setInvestments] = useState<Investment[]>([]);
     const [liquidities, setLiquidities] = useState<Liquidity[]>([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(false);
+    const [liquidityLoading, setLiquidityLoading] = useState(true);
+    const [liquidityError, setLiquidityError] = useState(false);
+    const [investmentLoading, setInvestmentLoading] = useState(true);
+    const [investmentError,   setInvestmentError] = useState(false);
 
     const loadInvestments = useCallback(async (retryCount = 0) => {
         try {
-            setLoading(true);
-            setError(false);
+            setInvestmentLoading(true);
+            setInvestmentError(false);
             const response = await fetch(`/investment/${year}`, {
                 headers: {
                     'Authorization': `Bearer ${token}`,
                     'Content-Type': 'application/json'
                 }
             });
-            if (!response.ok) throw new Error("Server error");
+            if (!response.ok) {
+                setInvestmentLoading(false);
+                // Leggi il testo o JSON di errore dalla risposta
+                const errorText = await response.text();
+                console.error("Errore server:", response.status, errorText);
+                throw new Error(errorText);
+            }
 
             const data = await response.json();
             setInvestments(data);
-            setLoading(false);
+            setInvestmentLoading(false);
         } catch (err) {
             if (retryCount < 5) {
                 setTimeout(() => loadInvestments(retryCount + 1), 1000);
             } else {
-                setError(true);
-                setLoading(false);
+                setInvestmentError(true);
+                setInvestmentLoading(false);
                 console.log("Errore nel caricamento:", err);
             }
         }
-    }, [year]);
+    }, []);
 
     const loadLiquidity = useCallback(async (retryCount = 0) => {
         try {
+            setLiquidityLoading(true);
+            setLiquidityError(false);
             const response = await fetch(`/liquidity/${year}`, {
                 headers: {
                     'Authorization': `Bearer ${token}`,
@@ -72,20 +82,22 @@ export default function Dashboard({ year, token }: DashboardProps) {
 
             const data = await response.json();
             setLiquidities(data);
+            setLiquidityLoading(false);
         } catch (err) {
             if (retryCount < 5) {
                 setTimeout(() => loadLiquidity(retryCount + 1), 1000);
             } else {
+                setLiquidityError(true);
+                setLiquidityLoading(false);
                 console.error("Errore definitivo nel caricamento della liquidità:", err);
             }
         }
-    }, [year]);
+    }, []);
 
     useEffect(() => {
         loadInvestments();
         loadLiquidity();
-    }, [loadInvestments, loadLiquidity]);
-
+    }, [loadInvestments, loadLiquidity, year]);
 
     return (
         <div className="container-fluid mt-4">
@@ -96,11 +108,11 @@ export default function Dashboard({ year, token }: DashboardProps) {
                     </div>
                 </div>
                 <div className="col-lg-3 mb-3">
-                    <LiquidityTable year={year} loading={loading} error={error} liquidities={liquidities} reloadLiquidity={loadLiquidity} token={token} />
+                    <LiquidityTable year={year} loading={liquidityLoading} error={liquidityError} liquidities={liquidities} reloadLiquidity={loadLiquidity} token={token} />
                 </div>
-                {/*<div className="col-lg-3 mb-3">*/}
-                {/*    <InvestmentTable />*/}
-                {/*</div>*/}
+                <div className="col-lg-3 mb-3">
+                    <InvestmentTable year={year} loading={investmentLoading} error={investmentError} investments={investments} reloadInvestment={loadInvestments} token={token} />
+                </div>
             </div>
         </div>
     );

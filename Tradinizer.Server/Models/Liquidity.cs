@@ -10,6 +10,7 @@ namespace Tradinizer.Server.Models
 
         // FK verso YearData
         public int YearDataId { get; set; }
+
         [JsonIgnore]
         public YearData YearData { get; set; }
     }

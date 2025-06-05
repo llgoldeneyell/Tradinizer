@@ -20,11 +20,11 @@ function App() {
     const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
 
 
-    const [year, setYear] = useState<number>(new Date().getFullYear());
+    const [year, setYear] = useState<number | null>(null);
     const [years, setYears] = useState([]);
     const [error, setError] = useState(false);
 
-    const loadYears = useCallback(async (retryCount = 0) => {
+    const loadYears = useCallback(async (retryCount = 0): Promise<number[]> => {
         try {
             setError(false);
             const token = getToken();  // Recupera il token salvato
@@ -34,7 +34,7 @@ function App() {
                     console.log("Token non presente");
                     tokenMissingLogged = true;
                 }
-                return; // esce senza fare la chiamata
+                return []; // esce senza fare la chiamata
             }
 
             // Reset della variabile nel caso successivo il token venga settato
@@ -50,12 +50,19 @@ function App() {
 
             const data = await response.json();
             setYears(data);
+            const data2: number[] = (data).map(Number);
+            return data2;
         } catch (err) {
             if (retryCount < 5) {
-                setTimeout(() => loadYears(retryCount + 1), 1000);
+                return new Promise((resolve) =>
+                    setTimeout(() => {
+                        loadYears(retryCount + 1).then(resolve);
+                    }, 1000)
+                );
             } else {
                 setError(true);
                 console.log("Errore nel caricamento:", err);
+                return []; // esce senza fare la chiamata
             }
         }
     }, [year]);
@@ -106,13 +113,13 @@ function App() {
             }
 
             // Ricarica gli anni e aggiorna l'anno attivo (ad esempio al più recente)
-            await loadYears();
-            if (years.length > 1) {
-                const remainingYears = years.filter(y => y !== year);
-                const mostRecent = Math.max(...remainingYears);
+            const loadedYears = await loadYears();
+            if (loadedYears.length > 0) {
+                // Trova il massimo convertendo le stringhe in numeri
+                const mostRecent = Math.max(...loadedYears);
                 setYear(mostRecent);
             } else {
-                setYear(new Date().getFullYear());
+                setYear(null);
             }
 
         } catch (error) {
@@ -120,8 +127,21 @@ function App() {
         }
     };
 
+    const initYears = async () => {
+        const loadedYears = await loadYears();
+        if (year == null) {
+            if (loadedYears.length > 0) {
+                // Trova il massimo convertendo le stringhe in numeri
+                const mostRecent = Math.max(...loadedYears);
+                setYear(mostRecent);
+            } else {
+                setYear(null);
+            }
+        }
+    };
+
     useEffect(() => {
-        loadYears();
+        initYears();
     }, [loadYears, token]);
 
     useEffect(() => {
@@ -133,6 +153,7 @@ function App() {
         sessionStorage.removeItem("token");
         localStorage.removeItem("token");
         setToken(null);
+        setYear(null);
     };
 
     return (
@@ -144,15 +165,17 @@ function App() {
                         {/* MOSTRA solo se c’è il token */}
                         {token && (
                             <>
-                                <Form.Select
-                                    style={{ width: "auto" }}
-                                    value={year}
-                                    onChange={(e) => setYear(parseInt(e.target.value))}
-                                >
-                                    {years.map((y) => (
-                                        <option key={y} value={y}>{y}</option>
-                                    ))}
-                                </Form.Select>
+                                {year && (
+                                    <Form.Select
+                                        style={{ width: "auto" }}
+                                        value={year}
+                                        onChange={(e) => setYear(parseInt(e.target.value))}
+                                    >
+                                        {years.map((y) => (
+                                            <option key={y} value={y}>{y}</option>
+                                        ))}
+                                    </Form.Select>
+                                )}
                                 <Button variant="outline-primary" onClick={() => setShowAddYearModal(true)}>+</Button>
                                 <Button variant="outline-danger" onClick={() => setShowDeleteConfirm(true)}>-</Button>
                                 <Button variant="outline-danger" onClick={handleLogout}>Logout</Button>
@@ -212,11 +235,12 @@ function App() {
                 </div>
             )}
 
-            {token ? (
-                /*<InvestmentEntry />*/
+            {!token ? (
+                <HomePage onLogin={(newToken) => setToken(newToken)} />
+            ) : year !== null ? (
                 <Dashboard year={year} token={token} />
             ) : (
-                <HomePage onLogin={(newToken) => setToken(newToken)} />
+                <div>Caricamento in corso...</div> // o null se preferisci niente
             )}
         </div>
     );

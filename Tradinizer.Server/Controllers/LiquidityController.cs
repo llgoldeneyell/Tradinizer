@@ -37,7 +37,7 @@ namespace Tradinizer.Server.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddYear([FromBody] LiquidityDto dto)
+        public async Task<IActionResult> PostLiquidity([FromBody] LiquidityDto dto)
         {
             if (dto == null)
                 return BadRequest("Dati mancanti");
@@ -96,6 +96,29 @@ namespace Tradinizer.Server.Controllers
                 await _context.SaveChangesAsync();
                 return Ok(liq);
             }
+        }
+
+        [HttpDelete("{year}/{id}")]
+        public async Task<IActionResult> DeleteYear(int id, int year)
+        {
+            var userId = _userManager.GetUserId(User);
+            var yearData = await _context.YearsData
+                .Include(y => y.Liquidities)
+                .FirstOrDefaultAsync(y => y.Year == year && y.ApplicationUserId == userId);
+
+            if (yearData == null)
+                return NotFound();
+
+            var liquidities = yearData.Liquidities;
+
+            var item = liquidities.FirstOrDefault(l => l.Id == id);
+            if (item == null) return NotFound();
+
+            liquidities.Remove(item);
+            yearData.ExitLiquidity -= item.Amount;
+            await _context.SaveChangesAsync();
+
+            return Ok(item);
         }
     }
 }
