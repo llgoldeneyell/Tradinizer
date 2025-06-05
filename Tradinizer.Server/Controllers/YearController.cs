@@ -43,38 +43,43 @@ namespace Tradinizer.Server.Controllers
                 return BadRequest("Dati mancanti");
 
             var userId = _userManager.GetUserId(User);
-            var userExists = await _context.Users.AnyAsync(u => u.Id == userId);
-            if (!userExists)
-                return Unauthorized("Utente non trovato nel database.");
-
-            var exists = await _context.YearsData.AnyAsync(y => y.Year == dto.Year && y.ApplicationUserId == userId);
-            if (exists)
-                return BadRequest("L'anno esiste già per questo utente.");
-
-            var yearData = new YearData
+            if (userId == null)
             {
-                Year = dto.Year,
-                ExitInvestment = dto.ExitInvestment,
-                ExitLiquidity = dto.ExitLiquidity,
-                ApplicationUserId = userId, // COLLEGA L'UTENTE!
-                Investments = dto.Investments?.Select(i => new Investment
-                {
-                    Date = i.Date,
-                    Amount = i.Amount,
-                    Type = i.Type,
-                    Name = i.Name
-                }).ToList() ?? new List<Investment>(), // Se null, assegna lista vuota
-                Liquidities = dto.Liquidities?.Select(l => new Liquidity
-                {
-                    Date = l.Date,
-                    Amount = l.Amount
-                }).ToList() ?? new List<Liquidity>() // Se null, assegna lista vuota
-            };
+                return Unauthorized("Utente non trovato nel database.");
+            }
+            else
+            {
+                var exists = await _context.YearsData.AnyAsync(y => y.Year == dto.Year && y.ApplicationUserId == userId);
+                if (exists)
+                    return BadRequest("L'anno esiste già per questo utente.");
 
-            _context.YearsData.Add(yearData);
-            await _context.SaveChangesAsync();
+                var yearData = new YearData
+                {
+                    Year = dto.Year,
+                    ExitInvestment = dto.ExitInvestment,
+                    ExitLiquidity = dto.ExitLiquidity,
+                    ApplicationUserId = userId, // COLLEGA L'UTENTE!
+                    Investments = dto.Investments?.Select(i => new Investment
+                    {
+                        Date = i.Date,
+                        Amount = i.Amount,
+                        Type = i.Type,
+                        Name = i.Name
+                    }).ToList() ?? new List<Investment>(), // Se null, assegna lista vuota
+                    Liquidities = dto.Liquidities?.Select(l => new Liquidity
+                    {
+                        Date = l.Date,
+                        Amount = l.Amount
+                    }).ToList() ?? new List<Liquidity>() // Se null, assegna lista vuota
+                };
 
-            return CreatedAtAction(nameof(GetYear), new { id = yearData.Id }, yearData);
+                _context.YearsData.Add(yearData);
+                await _context.SaveChangesAsync();
+
+                return CreatedAtAction(nameof(GetYear), new { id = yearData.Id }, yearData);
+            }
+
+           
         }
 
         [HttpGet("{id}")]

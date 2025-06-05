@@ -114,9 +114,10 @@ namespace Tradinizer.Server
                     },
                     OnTokenValidated = context =>
                     {
-                        Console.WriteLine("Token validato per: " + context.Principal.Identity?.Name);
+                        var name = context.Principal?.Identity?.Name ?? "utente sconosciuto";
+                        Console.WriteLine("Token validato per: " + name);
                         return Task.CompletedTask;
-                    }
+                    };
                 };
             });
 
