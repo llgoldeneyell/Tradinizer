@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Tab, Nav, Form, Button, Alert } from "react-bootstrap";
 import { useLocation } from "react-router-dom";
-import PasswordInput from '../components/PasswordInput';
+import PasswordInput from '../components/PasswordInput.tsx';
 
 type HomePageProps = {
     onLogin: (token: string) => void;
