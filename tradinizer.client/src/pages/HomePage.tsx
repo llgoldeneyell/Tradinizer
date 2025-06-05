@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Tab, Nav, Form, Button, Alert } from "react-bootstrap";
 import { useLocation } from "react-router-dom";
-import PasswordInput from '../components/PasswordInput.tsx';
+import HidePasswordInput from '../components/HidePasswordInput';
 
 type HomePageProps = {
     onLogin: (token: string) => void;
@@ -187,7 +187,7 @@ function HomePage({ onLogin }: HomePageProps) {
                                 />
                             </Form.Group>
 
-                            <PasswordInput
+                            <HidePasswordInput
                                 id="loginPassword"
                                 label="Password"
                                 value={loginPassword}
@@ -239,7 +239,7 @@ function HomePage({ onLogin }: HomePageProps) {
                             </Form.Group>
 
 
-                            <PasswordInput
+                            <HidePasswordInput
                                 id="registerPassword"
                                 label="Password"
                                 value={registerPassword}
@@ -247,7 +247,7 @@ function HomePage({ onLogin }: HomePageProps) {
                                 autoComplete="new-password"
                             />
 
-                            <PasswordInput
+                            <HidePasswordInput
                                 id="registerConfirmPassword"
                                 label="Password"
                                 value={registerConfirmPassword}
