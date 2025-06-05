@@ -1,23 +1,19 @@
 ﻿namespace Tradinizer.Server.Models
 {
-    public class Investment
+    public class Liquidity
     {
         public int Id { get; set; }
         public DateOnly Date { get; set; }
         public decimal Amount { get; set; }
-        public string Type { get; set; } = string.Empty;
-        public string Name { get; set; } = string.Empty;
 
         // FK verso YearData
         public int YearDataId { get; set; }
         public YearData YearData { get; set; }
     }
 
-    public class InvestmentDto
+    public class LiquidityDto
     {
         public DateOnly Date { get; set; }
         public decimal Amount { get; set; }
-        public string Type { get; set; } = string.Empty;
-        public string Name { get; set; } = string.Empty;
     }
 }

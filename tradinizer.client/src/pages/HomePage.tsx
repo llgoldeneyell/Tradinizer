@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Tab, Nav, Form, Button, Alert } from "react-bootstrap";
-import PasswordInput from './PasswordInput';
+import { useLocation } from "react-router-dom";
+import PasswordInput from '../components/PasswordInput';
 
 type HomePageProps = {
     onLogin: (token: string) => void;
@@ -17,10 +18,31 @@ function HomePage({ onLogin }: HomePageProps) {
 
     // Stati registrazione
     const [registerUsername, setRegisterUsername] = useState("");
+    const [registerEmail, setRegisterEmail] = useState("");
     const [registerPassword, setRegisterPassword] = useState("");
     const [registerConfirmPassword, setRegisterConfirmPassword] = useState("");
     const [registerError, setRegisterError] = useState<string | null>(null);
     const [registerSuccess, setRegisterSuccess] = useState<string | null>(null);
+
+    const location = useLocation();
+    const [showConfirmation, setShowConfirmation] = useState(false);
+
+    useEffect(() => {
+        if (showConfirmation) {
+            const url = new URL(window.location.href);
+            url.searchParams.delete("emailConfirmed");
+            window.history.replaceState({}, document.title, url.toString());
+        }
+    }, [showConfirmation]);
+
+    useEffect(() => {
+        const searchParams = new URLSearchParams(location.search);
+        const confirmed = searchParams.get("emailConfirmed");
+        if (confirmed === "true") {
+            setShowConfirmation(true);
+        }
+    }, [location.search]);
+
 
     // Handle login
     const handleLogin = async () => {
@@ -32,6 +54,7 @@ function HomePage({ onLogin }: HomePageProps) {
                 body: JSON.stringify({ username: loginUsername, password: loginPassword }),
             });
             if (!response.ok) {
+                console.log(response)
                 setLoginError("Login fallito");
                 return;
             }
@@ -102,7 +125,12 @@ function HomePage({ onLogin }: HomePageProps) {
             const response = await fetch("/auth/register", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ username: registerUsername, password: registerPassword }),
+                body: JSON.stringify({
+                    username: registerUsername,
+                    password: registerPassword,
+                    email: registerEmail
+                }),
+
             });
 
             if (!response.ok) {
@@ -111,8 +139,9 @@ function HomePage({ onLogin }: HomePageProps) {
                 return;
             }
 
-            setRegisterSuccess("Registrazione avvenuta con successo, puoi fare login");
+            setRegisterSuccess("Registrazione avvenuta con successo! Controlla la tua email per attivare lÅfaccount.");
             setRegisterUsername("");
+            setRegisterEmail("");
             setRegisterPassword("");
             setRegisterConfirmPassword("");
             setActiveKey("login");
@@ -123,6 +152,11 @@ function HomePage({ onLogin }: HomePageProps) {
 
     return (
         <div style={{ maxWidth: 600, margin: "30px auto", padding: "0 30px", height: "100vh" }}>
+            {showConfirmation && (
+                <Alert variant="success" className="mt-3">
+                    Email confermata con successo!
+                </Alert>
+            )}
             <Tab.Container activeKey={activeKey} onSelect={(k) => setActiveKey(k || "login")}>
                 <Nav variant="tabs" className="mb-3">
                     <Nav.Item className="w-50 text-center">
@@ -152,16 +186,6 @@ function HomePage({ onLogin }: HomePageProps) {
                                     onChange={(e) => setLoginUsername(e.target.value)}
                                 />
                             </Form.Group>
-
-                            {/*<Form.Group controlId="loginPassword" className="mt-2">*/}
-                            {/*    <Form.Label>Password</Form.Label>*/}
-                            {/*    <Form.Control*/}
-                            {/*        type="password"*/}
-                            {/*        autoComplete="current-password"*/}
-                            {/*        value={loginPassword}*/}
-                            {/*        onChange={(e) => setLoginPassword(e.target.value)}*/}
-                            {/*    />*/}
-                            {/*</Form.Group>*/}
 
                             <PasswordInput
                                 id="loginPassword"
@@ -204,15 +228,16 @@ function HomePage({ onLogin }: HomePageProps) {
                                 />
                             </Form.Group>
 
-                            {/*<Form.Group controlId="registerPassword" className="mt-2">*/}
-                            {/*    <Form.Label>Password</Form.Label>*/}
-                            {/*    <Form.Control*/}
-                            {/*        type="password"*/}
-                            {/*        value={registerPassword}*/}
-                            {/*        onChange={(e) => setRegisterPassword(e.target.value)}*/}
-                            {/*        autoComplete="new-password"*/}
-                            {/*    />*/}
-                            {/*</Form.Group>*/}
+                            <Form.Group controlId="registerEmail" className="mt-2">
+                                <Form.Label>Email</Form.Label>
+                                <Form.Control
+                                    type="email"
+                                    value={registerEmail}
+                                    onChange={(e) => setRegisterEmail(e.target.value)}
+                                    autoComplete="email"
+                                />
+                            </Form.Group>
+
 
                             <PasswordInput
                                 id="registerPassword"
@@ -221,16 +246,6 @@ function HomePage({ onLogin }: HomePageProps) {
                                 onChange={(e) => setRegisterPassword(e.target.value)}
                                 autoComplete="new-password"
                             />
-
-                            {/*<Form.Group controlId="registerConfirmPassword" className="mt-2">*/}
-                            {/*    <Form.Label>Conferma Password</Form.Label>*/}
-                            {/*    <Form.Control*/}
-                            {/*        type="password"*/}
-                            {/*        value={registerConfirmPassword}*/}
-                            {/*        onChange={(e) => setRegisterConfirmPassword(e.target.value)}*/}
-                            {/*        autoComplete="new-password"*/}
-                            {/*    />*/}
-                            {/*</Form.Group>*/}
 
                             <PasswordInput
                                 id="registerConfirmPassword"

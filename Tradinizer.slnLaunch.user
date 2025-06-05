@@ -1,0 +1,15 @@
+[
+  {
+    "Name": "Nuovo profilo",
+    "Projects": [
+      {
+        "Path": "tradinizer.client\\tradinizer.client.esproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "Tradinizer.Server\\Tradinizer.Server.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]

@@ -1,96 +1,91 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using BCrypt.Net;
+using Tradinizer.Server.Helpers;
 using Tradinizer.Server.Models;
 
 namespace Tradinizer.Server.Controllers
 {
+
     [ApiController]
     [Route("[controller]")]
     public class AuthController : ControllerBase
     {
-        private readonly UserManager<ApplicationUser> _userManager;
-        private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly ApplicationDbContext _context;
         private readonly IConfiguration _configuration;
 
-        public AuthController(
-            UserManager<ApplicationUser> userManager,
-            SignInManager<ApplicationUser> signInManager,
-            IConfiguration configuration)
+        public AuthController(ApplicationDbContext context, IConfiguration configuration)
         {
-            _userManager = userManager;
-            _signInManager = signInManager;
+            _context = context;
             _configuration = configuration;
         }
 
         [HttpPost("register")]
-        public async Task<IActionResult> Register([FromBody] RegisterDto model)
+        public async Task<IActionResult> Register([FromBody] RegisterRequest request)
         {
-            var user = new ApplicationUser { UserName = model.Username };
-            var result = await _userManager.CreateAsync(user, model.Password);
+            if (await _context.Users.AnyAsync(u => u.UserName == request.Username))
+                return BadRequest("Username già usato");
 
-            if (!result.Succeeded)
+            var user = new User
             {
-                return BadRequest(new { message = string.Join(", ", result.Errors.Select(e => e.Description)) });
-            }
+                UserName = request.Username,
+                Email = request.Email,
+                PasswordHash = BCrypt.Net.BCrypt.HashPassword(request.Password)
+            };
 
-            return Ok("User registered successfully");
+            _context.Users.Add(user);
+            await _context.SaveChangesAsync();
+
+            return Ok("Registrazione avvenuta con successo");
         }
 
         [HttpPost("login")]
-        public async Task<IActionResult> Login([FromBody] LoginDto model)
+        public async Task<IActionResult> Login([FromBody] LoginRequest request)
         {
-            var user = await _userManager.FindByNameAsync(model.Username);
-            if (user == null)
-                return Unauthorized("Invalid username or password");
-
-            var result = await _signInManager.CheckPasswordSignInAsync(user, model.Password, false);
-            if (!result.Succeeded)
-                return Unauthorized("Invalid username or password");
+            var user = await _context.Users.SingleOrDefaultAsync(u => u.UserName == request.Username);
+            if (user == null || !BCrypt.Net.BCrypt.Verify(request.Password, user.PasswordHash))
+                return Unauthorized("Credenziali non valide");
 
             var token = GenerateJwtToken(user);
-
-            return Ok(new { token });
+            return Ok(new { Token = token });
         }
 
-        private string GenerateJwtToken(ApplicationUser user)
+        // GET: api/users
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<User>>> GetUsers()
         {
-            var jwtSettings = _configuration.GetSection("JwtSettings");
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings["SecretKey"]));
-            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+            var users = await _context.Users.ToListAsync();
+            return Ok(users);
+        }
 
+        private string GenerateJwtToken(User user)
+        {
             var claims = new[]
             {
-                new Claim(JwtRegisteredClaimNames.Sub, user.Id),        // ID come "subject" principale
-                new Claim("username", user.UserName!),                   // username in claim personalizzata
-                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
-            };
+            new Claim(JwtRegisteredClaimNames.Sub, user.Id),
+            new Claim("username", user.UserName!),
+            new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
+        };
+
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
+            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
             var token = new JwtSecurityToken(
-                issuer: jwtSettings["Issuer"],
-                audience: jwtSettings["Audience"],
+                issuer: _configuration["Jwt:Issuer"],
+                audience: _configuration["Jwt:Audience"],
                 claims: claims,
-                expires: DateTime.Now.AddHours(1),
-                signingCredentials: creds
-            );
+                expires: DateTime.Now.AddHours(2),
+                signingCredentials: creds);
 
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
     }
 
-    // DTOs
-    public class RegisterDto
-    {
-        public string Username { get; set; } = string.Empty;
-        public string Password { get; set; } = string.Empty;
-    }
+    public record RegisterRequest(string Username, string Email, string Password);
+    public record LoginRequest(string Username, string Password);
 
-    public class LoginDto
-    {
-        public string Username { get; set; } = string.Empty;
-        public string Password { get; set; } = string.Empty;
-    }
 }

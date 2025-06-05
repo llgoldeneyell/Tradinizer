@@ -1,9 +1,10 @@
-﻿
+
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.FileProviders;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
+using System;
 using System.Text;
 using Tradinizer.Server.Helpers;
 using Tradinizer.Server.Models;
@@ -16,33 +17,70 @@ namespace Tradinizer.Server
         {
             var builder = WebApplication.CreateBuilder(args);
 
+#if DEBUG
+            builder.Services.AddEndpointsApiExplorer();
+            builder.Services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new() { Title = "Tradinizer API", Version = "v1" });
+
+                // Configurazione per usare JWT Bearer
+                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                {
+                    Description = @"JWT Authorization header using the Bearer scheme.  
+                                  Inserisci 'Bearer' seguito da uno spazio e il token JWT.  
+                                  Esempio: 'Bearer abc123...'",
+                    Name = "Authorization",
+                    In = ParameterLocation.Header,
+                    Type = SecuritySchemeType.ApiKey,
+                    Scheme = "Bearer"
+                });
+
+                c.AddSecurityRequirement(new OpenApiSecurityRequirement()
+                {
+                    {
+                        new OpenApiSecurityScheme
+                        {
+                            Reference = new OpenApiReference
+                            {
+                                Type = ReferenceType.SecurityScheme,
+                                Id = "Bearer"
+                            },
+                            Scheme = "oauth2",
+                            Name = "Bearer",
+                            In = ParameterLocation.Header
+                        },
+                        new List<string>()
+                    }
+                });
+            });
+#endif
+
             // Add services to the container.
+
             builder.Services.AddControllers();
+            // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
             builder.Services.AddOpenApi();
 
-            //int port = builder.Configuration.GetValue<int>("AppSettings:Port", 5000);
+            // Leggi la connection string da appsettings.json
+            var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
-            //builder.WebHost.ConfigureKestrel(options =>
-            //{
-            //    options.ListenLocalhost(port);
-            //});
-
-            builder.Services.AddDbContext<AppDbContext>(options =>
-                options.UseSqlite("Data Source=tradinizer.db"));
+            // Registra il DbContext con PostgreSQL
+            builder.Services.AddDbContext<ApplicationDbContext>(options =>
+                options.UseNpgsql(connectionString));
 
             // 1. Aggiungi Identity
-            builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
+            builder.Services.AddIdentity<User, IdentityRole>(options =>
             {
                 options.Password.RequireDigit = false;
                 options.Password.RequireNonAlphanumeric = false;
                 options.Password.RequiredLength = 6;
             })
-            .AddEntityFrameworkStores<AppDbContext>()
+            .AddEntityFrameworkStores<ApplicationDbContext>()
             .AddDefaultTokenProviders();
 
             // 2. Configura JWT
-            var jwtSettings = builder.Configuration.GetSection("JwtSettings");
-            var secretKey = jwtSettings["SecretKey"];
+            var jwtSettings = builder.Configuration.GetSection("Jwt");
+            var secretKey = jwtSettings["Key"];
             if (string.IsNullOrEmpty(secretKey))
             {
                 throw new InvalidOperationException("JWT SecretKey non configurata. Controlla appsettings.json!");
@@ -57,14 +95,14 @@ namespace Tradinizer.Server
             })
             .AddJwtBearer(options =>
             {
-                options.TokenValidationParameters = new TokenValidationParameters
+                options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
                 {
                     ValidateIssuer = true,
                     ValidateAudience = true,
                     ValidateLifetime = true,
                     ValidateIssuerSigningKey = true,
-                    ValidIssuer = jwtSettings["Issuer"] ?? "defaultissuer",
-                    ValidAudience = jwtSettings["Audience"] ?? "defaultaudience",
+                    ValidIssuer = builder.Configuration["Jwt:Issuer"],
+                    ValidAudience = builder.Configuration["Jwt:Audience"],
                     IssuerSigningKey = new SymmetricSecurityKey(key),
                 };
                 options.Events = new JwtBearerEvents
@@ -82,18 +120,18 @@ namespace Tradinizer.Server
                 };
             });
 
+            builder.Services.AddAuthorization();
+
             var app = builder.Build();
 
-            var viteDistPath = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), "..", "tradinizer.client", "dist"));
+#if DEBUG
+            // Attiva Swagger in Debug
+            app.UseSwagger();
+            app.UseSwaggerUI();
+#endif
 
             app.UseDefaultFiles();
-            //app.MapStaticAssets();
-            //app.UseStaticFiles();
-            app.UseStaticFiles(new StaticFileOptions
-            {
-                FileProvider = new PhysicalFileProvider(viteDistPath),
-                RequestPath = ""
-            });
+            app.MapStaticAssets();
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
@@ -103,19 +141,14 @@ namespace Tradinizer.Server
 
             app.UseHttpsRedirection();
 
-            // 3. Usa l’autenticazione prima di Authorization
+            // 3. Usa l�fautenticazione prima di Authorization
             app.UseAuthentication();
             app.UseAuthorization();
 
 
             app.MapControllers();
 
-            //app.MapFallbackToFile("/index.html");
-
-            app.MapFallbackToFile("index.html", new StaticFileOptions
-            {
-                FileProvider = new PhysicalFileProvider(viteDistPath)
-            });
+            app.MapFallbackToFile("/index.html");
 
             app.Run();
         }

@@ -1,4 +1,4 @@
-﻿import { fileURLToPath, URL } from 'node:url';
+import { fileURLToPath, URL } from 'node:url';
 
 import { defineConfig } from 'vite';
 import plugin from '@vitejs/plugin-react';
@@ -35,7 +35,7 @@ if (!fs.existsSync(certFilePath) || !fs.existsSync(keyFilePath)) {
 }
 
 const target = env.ASPNETCORE_HTTPS_PORT ? `https://localhost:${env.ASPNETCORE_HTTPS_PORT}` :
-    env.ASPNETCORE_URLS ? env.ASPNETCORE_URLS.split(';')[0] : 'https://localhost:7188';
+    env.ASPNETCORE_URLS ? env.ASPNETCORE_URLS.split(';')[0] : 'https://localhost:7243';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -47,25 +47,16 @@ export default defineConfig({
     },
     server: {
         proxy: {
-            '^/investments': {
-                target,
-                secure: false
-            },
-            '^/chartData': {
-                target,
-                secure: false
-            },
-            '^/years': {
-                target,
-                secure: false
-            },
             '^/auth': {
+                target,
+                secure: false
+            },
+            '^/year': {
                 target,
                 secure: false
             }
         },
-        host: true,
-        port: parseInt(env.DEV_SERVER_PORT || '61283'),
+        port: parseInt(env.DEV_SERVER_PORT || '60375'),
         https: {
             key: fs.readFileSync(keyFilePath),
             cert: fs.readFileSync(certFilePath),
