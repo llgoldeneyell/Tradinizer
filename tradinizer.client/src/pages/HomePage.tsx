@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+﻿import { useState, useEffect } from "react";
 import { Tab, Nav, Form, Button, Alert } from "react-bootstrap";
 import { useLocation } from "react-router-dom";
 import HidePasswordInput from '../components/HidePasswordInput';
@@ -9,6 +9,7 @@ type HomePageProps = {
 
 function HomePage({ onLogin }: HomePageProps) {
     const [activeKey, setActiveKey] = useState("login");
+    const [isLoggingIn, setIsLoggingIn] = useState(false);
 
     // Stati login
     const [loginUsername, setLoginUsername] = useState("");
@@ -47,6 +48,7 @@ function HomePage({ onLogin }: HomePageProps) {
     // Handle login
     const handleLogin = async () => {
         setLoginError(null);
+        setIsLoggingIn(true);
         try {
             const response = await fetch("/auth/login", {
                 method: "POST",
@@ -75,6 +77,8 @@ function HomePage({ onLogin }: HomePageProps) {
             }
         } catch {
             setLoginError("Errore di connessione");
+        } finally {
+            setIsLoggingIn(false);
         }
     };
 
@@ -139,7 +143,7 @@ function HomePage({ onLogin }: HomePageProps) {
                 return;
             }
 
-            setRegisterSuccess("Registrazione avvenuta con successo! Controlla la tua email per attivare l�faccount.");
+            setRegisterSuccess("Registrazione avvenuta con successo! Controlla la tua email per attivare lfaccount.");
             setRegisterUsername("");
             setRegisterEmail("");
             setRegisterPassword("");
@@ -210,8 +214,21 @@ function HomePage({ onLogin }: HomePageProps) {
                                 </Alert>
                             )}
 
-                            <Button className="mt-3 w-100" onClick={handleLogin} variant="primary" type="button">
-                                Login
+                            <Button
+                                className="mt-3 w-100"
+                                onClick={handleLogin}
+                                variant="primary"
+                                type="button"
+                                disabled={isLoggingIn}
+                            >
+                                {isLoggingIn ? (
+                                    <>
+                                        <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                                        Accesso in corso...
+                                    </>
+                                ) : (
+                                    "Login"
+                                )}
                             </Button>
                         </Form>
                     </Tab.Pane>
