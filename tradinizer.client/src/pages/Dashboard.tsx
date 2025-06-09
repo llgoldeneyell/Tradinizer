@@ -103,22 +103,22 @@ export default function Dashboard({ year, token }: DashboardProps) {
         <div className="container-fluid mt-4">
             {/* Riquadro con i riepiloghi */}
             <div className="row mb-4">
-                <div className="col-12">
-                    <div className="border rounded p-4 bg-light shadow-sm d-flex justify-content-between text-center">
-                        <div className="flex-fill">
-                            <h6 className="text-muted">Investimento attuale</h6>
-                            <h5>€ 12.345</h5>
-                        </div>
-                        <div className="vr mx-4" /> {/* linea verticale divisoria */}
-                        <div className="flex-fill">
-                            <h6 className="text-muted">Liquidità attuale</h6>
-                            <h5>€ 4.321</h5>
-                        </div>
-                        <div className="vr mx-4" />
-                        <div className="flex-fill">
-                            <h6 className="text-muted">Percentuale totale</h6>
-                            <h5>74%</h5>
-                        </div>
+                <div className="col-lg-4 col-md-6 col-sm-12 mb-3">
+                    <div className="border rounded p-4 bg-light shadow-sm text-center h-100">
+                        <h6 className="text-muted">Investimento attuale</h6>
+                        <h5>€ 12.345</h5>
+                    </div>
+                </div>
+                <div className="col-lg-4 col-md-6 col-sm-12 mb-3">
+                    <div className="border rounded p-4 bg-light shadow-sm text-center h-100">
+                        <h6 className="text-muted">Liquidità attuale</h6>
+                        <h5>€ 4.321</h5>
+                    </div>
+                </div>
+                <div className="col-lg-4 col-md-6 col-sm-12 mb-3">
+                    <div className="border rounded p-4 bg-light shadow-sm text-center h-100">
+                        <h6 className="text-muted">Percentuale totale</h6>
+                        <h5>74%</h5>
                     </div>
                 </div>
             </div>
