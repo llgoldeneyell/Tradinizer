@@ -99,6 +99,17 @@ export default function Dashboard({ year, token }: DashboardProps) {
         loadLiquidity();
     }, [loadInvestments, loadLiquidity, year]);
 
+    // Somma totale degli investimenti
+    const totalInvestment = investments.reduce((sum, inv) => sum + inv.amount, 0);
+
+    // Ultima liquidità disponibile (assumendo ordinati per data crescente)
+    const latestLiquidity = liquidities.length > 0 ? liquidities[liquidities.length - 1].amount : 0;
+
+    // Calcolo percentuale (investimenti rispetto a liquidità)
+    const totalPercentage = latestLiquidity > 0
+        ? Math.round((totalInvestment / latestLiquidity) * 100)
+        : 0;
+
     return (
         <div className="container-fluid mt-4">
             {/* Riquadro con i riepiloghi */}
@@ -106,19 +117,19 @@ export default function Dashboard({ year, token }: DashboardProps) {
                 <div className="col-lg-4 col-md-6 col-sm-12 mb-3">
                     <div className="border rounded p-4 bg-light shadow-sm text-center h-100">
                         <h6 className="text-muted">Investimento attuale</h6>
-                        <h5>€ 12.345</h5>
+                        <h5>€ {totalInvestment.toLocaleString()}</h5>
                     </div>
                 </div>
                 <div className="col-lg-4 col-md-6 col-sm-12 mb-3">
                     <div className="border rounded p-4 bg-light shadow-sm text-center h-100">
                         <h6 className="text-muted">Liquidità attuale</h6>
-                        <h5>€ 4.321</h5>
+                        <h5>€ {latestLiquidity.toLocaleString()}</h5>
                     </div>
                 </div>
                 <div className="col-lg-4 col-md-6 col-sm-12 mb-3">
                     <div className="border rounded p-4 bg-light shadow-sm text-center h-100">
                         <h6 className="text-muted">Percentuale totale</h6>
-                        <h5>74%</h5>
+                        <h5>{totalPercentage}%</h5>
                     </div>
                 </div>
             </div>
