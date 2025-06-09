@@ -7,6 +7,8 @@ using System.Text;
 using BCrypt.Net;
 using Tradinizer.Server.Helpers;
 using Tradinizer.Server.Models;
+using Microsoft.AspNetCore.Identity;
+using System.Web;
 
 namespace Tradinizer.Server.Controllers
 {
@@ -17,30 +19,69 @@ namespace Tradinizer.Server.Controllers
     {
         private readonly ApplicationDbContext _context;
         private readonly IConfiguration _configuration;
+        private readonly UserManager<User> _userManager;
+        private readonly IEmailSender _emailSender;
 
-        public AuthController(ApplicationDbContext context, IConfiguration configuration)
+        public AuthController(ApplicationDbContext context, IConfiguration configuration, UserManager<User> userManager, IEmailSender emailSender)
         {
             _context = context;
             _configuration = configuration;
+            _userManager = userManager;
+            _emailSender = emailSender;
         }
 
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] RegisterRequest request)
         {
-            if (await _context.Users.AnyAsync(u => u.UserName == request.Username))
+            if (await _userManager.FindByNameAsync(request.Username) != null)
                 return BadRequest("Username già usato");
+
+            if (await _userManager.FindByEmailAsync(request.Email) != null)
+                return BadRequest("Email già usata");
 
             var user = new User
             {
                 UserName = request.Username,
                 Email = request.Email,
-                PasswordHash = BCrypt.Net.BCrypt.HashPassword(request.Password)
+                EmailConfirmed = false // Email non confermata finché non clicca il link
             };
 
-            _context.Users.Add(user);
-            await _context.SaveChangesAsync();
+            var result = await _userManager.CreateAsync(user, request.Password);
+            if (!result.Succeeded)
+                return BadRequest(result.Errors);
 
-            return Ok("Registrazione avvenuta con successo");
+            // Genera token di conferma email
+            var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+            // Encode token per URL
+            var encodedToken = System.Web.HttpUtility.UrlEncode(token);
+
+            // Crea l'URL di conferma (modifica l'URL base con il tuo frontend o endpoint apposito)
+            var confirmationLink = $"{Request.Scheme}://{Request.Host}/confirm-email?userId={user.Id}&token={encodedToken}";
+
+            // Invia email con il link
+            await _emailSender.SendEmailAsync(user.Email, "Conferma la tua email",
+                $"Ciao {user.UserName},<br/><br/>Per favore conferma il tuo account cliccando sul link: <a href='{confirmationLink}'>Conferma Email</a>");
+
+            return Ok("Registrazione avvenuta con successo, controlla la tua email per attivare l'account");
+        }
+
+        [HttpGet("confirm-email")]
+        public async Task<IActionResult> ConfirmEmail(string userId, string token)
+        {
+            if (userId == null || token == null)
+                return BadRequest("User ID e token sono richiesti");
+
+            var user = await _userManager.FindByIdAsync(userId);
+            if (user == null)
+                return NotFound("Utente non trovato");
+
+            var decodedToken = HttpUtility.UrlDecode(token);
+            var result = await _userManager.ConfirmEmailAsync(user, decodedToken);
+
+            if (result.Succeeded)
+                return Ok("Email confermata con successo");
+            else
+                return BadRequest("Errore nella conferma dell'email");
         }
 
         [HttpPost("login")]

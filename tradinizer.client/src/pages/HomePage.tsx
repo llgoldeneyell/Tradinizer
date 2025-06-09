@@ -44,6 +44,12 @@ function HomePage({ onLogin }: HomePageProps) {
         }
     }, [location.search]);
 
+    useEffect(() => {
+        setRegisterError(null);
+        setRegisterSuccess(null);
+        setLoginError(null);
+    }, [activeKey]);
+
 
     // Handle login
     const handleLogin = async () => {

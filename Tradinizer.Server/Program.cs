@@ -1,4 +1,4 @@
-
+﻿
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -78,6 +78,10 @@ namespace Tradinizer.Server
             .AddEntityFrameworkStores<ApplicationDbContext>()
             .AddDefaultTokenProviders();
 
+            // Registrazione EmailSender e EmailSettings
+            builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("EmailSettings"));
+            builder.Services.AddTransient<IEmailSender, EmailSender>();
+
             // 2. Configura JWT
             var jwtSettings = builder.Configuration.GetSection("Jwt");
             var secretKey = jwtSettings["Key"];
@@ -142,7 +146,7 @@ namespace Tradinizer.Server
 
             app.UseHttpsRedirection();
 
-            // 3. Usa l�fautenticazione prima di Authorization
+            // 3. Usa lfautenticazione prima di Authorization
             app.UseAuthentication();
             app.UseAuthorization();
 
