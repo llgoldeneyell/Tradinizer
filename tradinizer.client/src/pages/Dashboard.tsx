@@ -105,9 +105,9 @@ export default function Dashboard({ year, token }: DashboardProps) {
     // Ultima liquidità disponibile (assumendo ordinati per data crescente)
     const latestLiquidity = liquidities.length > 0 ? liquidities[liquidities.length - 1].amount : 0;
 
-    // Calcolo percentuale (investimenti rispetto a liquidità)
-    const totalPercentage = latestLiquidity > 0
-        ? Math.round((totalInvestment / latestLiquidity) * 100)
+    // Calcolo variazione percentuale tra liquidità e investimenti
+    const growthPercentage = totalInvestment > 0
+        ? ((latestLiquidity - totalInvestment) / totalInvestment) * 100
         : 0;
 
     return (
@@ -128,8 +128,11 @@ export default function Dashboard({ year, token }: DashboardProps) {
                 </div>
                 <div className="col-lg-4 col-md-6 col-sm-12 mb-3">
                     <div className="border rounded p-4 bg-light shadow-sm text-center h-100">
-                        <h6 className="text-muted">Percentuale totale</h6>
-                        <h5>{totalPercentage}%</h5>
+                        <h6 className="text-muted">Crescita rispetto agli investimenti</h6>
+                        <h5 className={growthPercentage >= 0 ? "text-success" : "text-danger"}>
+                            {growthPercentage >= 0 ? "+" : ""}
+                            {growthPercentage.toFixed(2)}%
+                        </h5>
                     </div>
                 </div>
             </div>
