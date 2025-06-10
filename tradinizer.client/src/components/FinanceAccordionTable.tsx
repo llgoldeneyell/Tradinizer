@@ -56,7 +56,8 @@ export default function FinanceAccordionTable<T extends { date: string }>({
     const formatMonthKey = (key: string) => {
         const [year, month] = key.split("-");
         const date = new Date(Number(year), Number(month) - 1);
-        return date.toLocaleString("it-IT", { month: "long", year: "numeric" });
+        const monthName = date.toLocaleString("it-IT", { month: "long" });
+        return monthName.charAt(0).toUpperCase() + monthName.slice(1);
     };
 
     return (
