@@ -1,6 +1,6 @@
 ﻿import { useState, useEffect} from "react";
 import { Modal, Button, Form } from "react-bootstrap";
-import FinanceTable from "./FinanceTable";
+import FinanceAccordionTable from "./FinanceAccordionTable";
 import { FaTrash } from 'react-icons/fa';
 
 interface Liquidity {
@@ -128,13 +128,12 @@ export default function LiquidityTable({ year, loading, error, liquidities, relo
 
 
             {/* TABELLA */}
-            <FinanceTable<Liquidity>
+            <FinanceAccordionTable<Liquidity>
                 title="Liquidità Giornaliera"
                 data={liquidities}
                 loading={loading}
                 error={error}
                 onAdd={() => setLiquidityOpen(true)}
-                //onDelete={handleDeleteLiquidity}
                 columns={[
                     { key: "date", label: "Data" },
                     {

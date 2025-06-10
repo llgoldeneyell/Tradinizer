@@ -1,6 +1,6 @@
 ﻿import { useState, useEffect } from "react";
 import { Modal, Button, Form } from "react-bootstrap";
-import FinanceTable from "./FinanceTable";
+import FinanceAccordionTable from "./FinanceAccordionTable";
 import { FaTrash } from 'react-icons/fa';
 
 interface Investment {
@@ -208,13 +208,12 @@ export default function InvestmentTable({ year, loading, error, investments, rel
 
 
             {/* TABELLA */}
-            <FinanceTable<Investment>
+            <FinanceAccordionTable<Investment>
                 title="Investimenti"
                 data={investments}
                 loading={loading}
                 error={error}
                 onAdd={() => setInvestmentOpen(true)}
-                //onDelete={handleDeleteInvestment}
                 columns={[
                     { key: "date", label: "Data" },
                     { key: "type", label: "Tipo" },

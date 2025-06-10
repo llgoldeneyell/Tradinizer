@@ -16,36 +16,30 @@ interface Action<T> {
 }
 
 interface FinanceTableProps<T extends object> {
-    title: string;
     data: T[];
     columns: Column<T>[];
     loading: boolean;
     error: boolean;
-    onAdd: () => void;
-    //onDelete?: (item: T) => void; // nuova prop per cancellare
     rowKey?: keyof T;
     actions?: Action<T>[]
 }
 
 export default function FinanceTable<T extends object>({
-    title,
     data,
     columns,
     loading,
     error,
-    onAdd,
-    //onDelete,
     rowKey,
     actions
 }: FinanceTableProps<T>) {
     return (
         <div style={{ flex: 1 }}>
-            <div className="d-flex justify-content-between align-items-center mb-2">
-                <h5>{title}</h5>
-                <Button variant="outline-primary" size="sm" onClick={onAdd}>
-                    Aggiungi
-                </Button>
-            </div>
+            {/*<div className="d-flex justify-content-between align-items-center mb-2">*/}
+            {/*    <h5>{title}</h5>*/}
+            {/*    <Button variant="outline-primary" size="sm" onClick={onAdd}>*/}
+            {/*        Aggiungi*/}
+            {/*    </Button>*/}
+            {/*</div>*/}
 
             {loading ? (
                 <div className="d-flex align-items-center">
@@ -57,7 +51,7 @@ export default function FinanceTable<T extends object>({
             ) : data.length === 0 ? (
                 <p className="text-muted">Nessun dato disponibile.</p>
                     ) : (
-                        <table className="table table-bordered table-sm align-middle" aria-label={title}>
+                        <table className="table table-bordered table-sm align-middle">
                     <thead>
                         <tr>
                                         {columns.map((col) => (<th key={col.key.toString()}>{col.label}</th>))}
@@ -92,20 +86,6 @@ export default function FinanceTable<T extends object>({
                                         ))}
                                     </td>
                                 )}
-
-                                {/*{onDelete && (*/}
-                                {/*    <td className="text-center">*/}
-                                {/*        <Button*/}
-                                {/*            variant="outline-danger"*/}
-                                {/*            size="sm"*/}
-                                {/*            onClick={() => onDelete(item)}*/}
-                                {/*            title="Elimina"*/}
-                                {/*            aria-label="Elimina riga"*/}
-                                {/*        >*/}
-                                {/*            <FaTrash />*/}
-                                {/*        </Button>*/}
-                                {/*    </td>*/}
-                                {/*)}*/}
                             </tr>
                         ))}
                     </tbody>
