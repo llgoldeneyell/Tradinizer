@@ -1,6 +1,7 @@
 ﻿import { useState, useEffect } from "react";
 import { Modal, Button, Form } from "react-bootstrap";
 import FinanceTable from "./FinanceTable";
+import { FaTrash } from 'react-icons/fa';
 
 interface Investment {
     id?: number;
@@ -8,6 +9,12 @@ interface Investment {
     amount: number;
     type: string;
     name: string;
+}
+interface Action<T> {
+    icon: React.ReactNode;
+    title: string;
+    onClick: (item: T) => void;
+    variant?: string; // es. "outline-primary", "danger", ecc.
 }
 
 interface Props {
@@ -83,6 +90,15 @@ export default function InvestmentTable({ year, loading, error, investments, rel
     useEffect(() => {
         reloadInvestment();
     }, [year]);
+
+    const actions: Action<Investment>[] = [
+        {
+            icon: <FaTrash />,
+            title: "Elimina",
+            onClick: (item) => handleDeleteInvestment(item),
+            variant: "outline-danger"
+        }
+    ];
 
     
 
@@ -198,7 +214,7 @@ export default function InvestmentTable({ year, loading, error, investments, rel
                 loading={loading}
                 error={error}
                 onAdd={() => setInvestmentOpen(true)}
-                onDelete={handleDeleteInvestment}
+                //onDelete={handleDeleteInvestment}
                 columns={[
                     { key: "date", label: "Data" },
                     { key: "type", label: "Tipo" },
@@ -209,6 +225,7 @@ export default function InvestmentTable({ year, loading, error, investments, rel
                         render: (value) => (value as number).toFixed(2),
                     },
                 ]}
+                actions={actions} // 👈 passa le azioni
                 rowKey="id"
             />
         </>

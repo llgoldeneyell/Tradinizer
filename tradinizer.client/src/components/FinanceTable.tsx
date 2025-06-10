@@ -1,11 +1,18 @@
 ﻿import React from "react";
 import { Button } from "react-bootstrap";
-import { FaTrash } from "react-icons/fa"; // usa react-icons per lficona
+//import { FaTrash } from "react-icons/fa"; // usa react-icons per lficona
 
 interface Column<T> {
     key: keyof T;
     label: string;
     render?: (value: T[keyof T], row: T) => React.ReactNode;
+}
+
+interface Action<T> {
+    icon: React.ReactNode;
+    title: string;
+    onClick: (item: T) => void;
+    variant?: string; // es. "outline-primary", "danger", ecc.
 }
 
 interface FinanceTableProps<T extends object> {
@@ -15,8 +22,9 @@ interface FinanceTableProps<T extends object> {
     loading: boolean;
     error: boolean;
     onAdd: () => void;
-    onDelete?: (item: T) => void; // nuova prop per cancellare
+    //onDelete?: (item: T) => void; // nuova prop per cancellare
     rowKey?: keyof T;
+    actions?: Action<T>[]
 }
 
 export default function FinanceTable<T extends object>({
@@ -26,8 +34,9 @@ export default function FinanceTable<T extends object>({
     loading,
     error,
     onAdd,
-    onDelete,
+    //onDelete,
     rowKey,
+    actions
 }: FinanceTableProps<T>) {
     return (
         <div style={{ flex: 1 }}>
@@ -45,12 +54,14 @@ export default function FinanceTable<T extends object>({
                 </div>
             ) : error ? (
                 <p className="text-danger">Errore nel caricamento dei dati.</p>
-                ) : (
-                    <table className="table table-bordered" aria-label={title}>
+            ) : data.length === 0 ? (
+                <p className="text-muted">Nessun dato disponibile.</p>
+                    ) : (
+                        <table className="table table-bordered table-sm align-middle" aria-label={title}>
                     <thead>
                         <tr>
-                            {columns.map((col) => (<th key={col.key.toString()}>{col.label}</th>))}
-                            {onDelete && <th style={{ width: "40px" }}></th>}
+                                        {columns.map((col) => (<th key={col.key.toString()}>{col.label}</th>))}
+                                        {(actions?.length ?? 0) > 0 && <th style={{ width: "1%" }}></th>}
                         </tr>
                     </thead>
                     <tbody>
@@ -63,19 +74,38 @@ export default function FinanceTable<T extends object>({
                                             : String(item[col.key] ?? '')}
                                     </td>
                                 ))}
-                                {onDelete && (
+
+                                {actions && actions.length > 0 && (
                                     <td className="text-center">
-                                        <Button
-                                            variant="outline-danger"
-                                            size="sm"
-                                            onClick={() => onDelete(item)}
-                                            title="Elimina"
-                                            aria-label="Elimina riga"
-                                        >
-                                            <FaTrash />
-                                        </Button>
+                                        {actions.map((action, i) => (
+                                            <Button
+                                                key={i}
+                                                variant={action.variant || 'outline-secondary'}
+                                                size="sm"
+                                                onClick={() => action.onClick(item)}
+                                                title={action.title}
+                                                aria-label={action.title}
+                                                className="me-1"
+                                            >
+                                                {action.icon}
+                                            </Button>
+                                        ))}
                                     </td>
                                 )}
+
+                                {/*{onDelete && (*/}
+                                {/*    <td className="text-center">*/}
+                                {/*        <Button*/}
+                                {/*            variant="outline-danger"*/}
+                                {/*            size="sm"*/}
+                                {/*            onClick={() => onDelete(item)}*/}
+                                {/*            title="Elimina"*/}
+                                {/*            aria-label="Elimina riga"*/}
+                                {/*        >*/}
+                                {/*            <FaTrash />*/}
+                                {/*        </Button>*/}
+                                {/*    </td>*/}
+                                {/*)}*/}
                             </tr>
                         ))}
                     </tbody>

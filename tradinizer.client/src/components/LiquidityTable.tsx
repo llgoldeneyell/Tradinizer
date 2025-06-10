@@ -1,12 +1,20 @@
 ﻿import { useState, useEffect} from "react";
 import { Modal, Button, Form } from "react-bootstrap";
 import FinanceTable from "./FinanceTable";
+import { FaTrash } from 'react-icons/fa';
 
 interface Liquidity {
     id?: number;
     date: string;
     amount: number;
 }
+interface Action<T> {
+    icon: React.ReactNode;
+    title: string;
+    onClick: (item: T) => void;
+    variant?: string; // es. "outline-primary", "danger", ecc.
+}
+
 
 interface Props {
     year: number;
@@ -68,6 +76,15 @@ export default function LiquidityTable({ year, loading, error, liquidities, relo
         reloadLiquidity();
     }, [year]);
 
+    const actions: Action<Liquidity>[] = [
+        {
+            icon: <FaTrash />,
+            title: "Elimina",
+            onClick: (item) => handleDeleteLiquidity(item),
+            variant: "outline-danger"
+        }
+    ];
+
 
     return (
         <>
@@ -117,7 +134,7 @@ export default function LiquidityTable({ year, loading, error, liquidities, relo
                 loading={loading}
                 error={error}
                 onAdd={() => setLiquidityOpen(true)}
-                onDelete={handleDeleteLiquidity}
+                //onDelete={handleDeleteLiquidity}
                 columns={[
                     { key: "date", label: "Data" },
                     {
@@ -126,6 +143,7 @@ export default function LiquidityTable({ year, loading, error, liquidities, relo
                         render: (value) => (value as number).toFixed(2),
                     },
                 ]}
+                actions={actions} // 👈 passa le azioni
                 rowKey="id"
             />
         </>
