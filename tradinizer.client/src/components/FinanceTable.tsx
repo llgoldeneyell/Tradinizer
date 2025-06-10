@@ -1,6 +1,6 @@
-import React from "react";
+﻿import React from "react";
 import { Button } from "react-bootstrap";
-import { FaTrash } from "react-icons/fa"; // usa react-icons per l�ficona
+import { FaTrash } from "react-icons/fa"; // usa react-icons per lficona
 
 interface Column<T> {
     key: keyof T;
@@ -16,6 +16,7 @@ interface FinanceTableProps<T extends object> {
     error: boolean;
     onAdd: () => void;
     onDelete?: (item: T) => void; // nuova prop per cancellare
+    rowKey?: keyof T;
 }
 
 export default function FinanceTable<T extends object>({
@@ -26,6 +27,7 @@ export default function FinanceTable<T extends object>({
     error,
     onAdd,
     onDelete,
+    rowKey,
 }: FinanceTableProps<T>) {
     return (
         <div style={{ flex: 1 }}>
@@ -43,8 +45,8 @@ export default function FinanceTable<T extends object>({
                 </div>
             ) : error ? (
                 <p className="text-danger">Errore nel caricamento dei dati.</p>
-            ) : (
-                <table className="table table-bordered">
+                ) : (
+                    <table className="table table-bordered" aria-label={title}>
                     <thead>
                         <tr>
                             {columns.map((col) => (<th key={col.key.toString()}>{col.label}</th>))}
@@ -53,7 +55,7 @@ export default function FinanceTable<T extends object>({
                     </thead>
                     <tbody>
                         {data.map((item, rowIndex) => (
-                            <tr key={rowIndex}>
+                            <tr key={rowKey && item[rowKey] !== undefined ? String(item[rowKey]) : rowIndex}>
                                 {columns.map((col) => (
                                     <td key={col.key.toString()}>
                                         {col.render
@@ -68,6 +70,7 @@ export default function FinanceTable<T extends object>({
                                             size="sm"
                                             onClick={() => onDelete(item)}
                                             title="Elimina"
+                                            aria-label="Elimina riga"
                                         >
                                             <FaTrash />
                                         </Button>

@@ -192,7 +192,7 @@ export default function InvestmentTable({ year, loading, error, investments, rel
 
 
             {/* TABELLA */}
-            <FinanceTable
+            <FinanceTable<Investment>
                 title="Investimenti"
                 data={investments}
                 loading={loading}
@@ -209,6 +209,7 @@ export default function InvestmentTable({ year, loading, error, investments, rel
                         render: (value) => (value as number).toFixed(2),
                     },
                 ]}
+                rowKey="id"
             />
         </>
     );

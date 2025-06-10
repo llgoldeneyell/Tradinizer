@@ -111,7 +111,7 @@ export default function LiquidityTable({ year, loading, error, liquidities, relo
 
 
             {/* TABELLA */}
-            <FinanceTable
+            <FinanceTable<Liquidity>
                 title="Liquidità Giornaliera"
                 data={liquidities}
                 loading={loading}
@@ -126,6 +126,7 @@ export default function LiquidityTable({ year, loading, error, liquidities, relo
                         render: (value) => (value as number).toFixed(2),
                     },
                 ]}
+                rowKey="id"
             />
         </>
     );
